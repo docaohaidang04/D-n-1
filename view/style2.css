@@ -1,29 +1,43 @@
+h2 {
+    text-align: center;
+    color: black;
+    margin-top: 20px;
 
-    h2 {
-        text-align: center;
-        color: black;
-        margin-top: 20px;
+}
 
-    }
+.menuad {
+    background-color: #0f111d;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
 
-    .menuad {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
+/* Thiết lập định dạng cho các liên kết trong menu */
+.menuad nav a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+    text-align: center;
+}
 
-    /* Thiết lập định dạng cho các liên kết trong menu */
-    .menuad nav a {
-        text-decoration: none;
-        color: #fff;
-        margin-right: 20px;
-        text-align: center;
-    }
-.form-loai{
+.form-loai {
     width: 100%;
     margin: 20px;
     /* justify-content: center; */
+}
+
+.form-loai #errTen,
+#errPass,
+#errMail,
+#errPhone,
+#errVaitro,
+#errMa,
+#errHinh,
+#errGia,
+#errTrangthai,
+#errDanhmuc
+{
+    color: red;
 }
 
 form {
@@ -41,7 +55,10 @@ label {
     margin-top: 10px;
 }
 
-input[type="file"],input[type="text"],input[type="password"],select {
+input[type="file"],
+input[type="text"],
+input[type="password"],
+select {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
@@ -52,7 +69,8 @@ input[type="file"],input[type="text"],input[type="password"],select {
 input[type="file"] {
     border: none;
 }
-input[type="radio"]{
+
+input[type="radio"] {
     padding: 0px;
     margin-bottom: 0px;
     border: 1px solid #ccc;
@@ -73,19 +91,25 @@ input[type="radio"]{
 }
 
 .content {
-    display: flex; /* Sử dụng flexbox để cùng một hàng */
-    justify-content: space-between; /* Các phần tử nằm cách xa nhau */
-    align-items: flex-start; /* Căn phần tử con theo đỉnh */
+    display: flex;
+    /* Sử dụng flexbox để cùng một hàng */
+    justify-content: space-between;
+    /* Các phần tử nằm cách xa nhau */
+    align-items: flex-start;
+    /* Căn phần tử con theo đỉnh */
 }
 
 .form-loai {
-    flex: 1; /* Chia tỷ lệ để đảm bảo form tự mở rộng */
-   padding-right: 10px;
+    flex: 1;
+    /* Chia tỷ lệ để đảm bảo form tự mở rộng */
+    padding-right: 10px;
 }
 
 table {
-    flex: 2; /* Chia tỷ lệ để bảng tự mở rộng */
+    flex: 2;
+    /* Chia tỷ lệ để bảng tự mở rộng */
 }
+
 table {
     margin: 20px;
     float: left;
@@ -95,30 +119,36 @@ table {
 
 }
 
-.btn{
+.btn {
     width: 100px;
     background-color: #4caf11;
 }
 
 th {
-    background-color: #f2f2f2; /* Màu nền của tiêu đề cột */
-    padding: 8px; /* Khoảng cách bên trong ô */
-   
+    background-color: #f2f2f2;
+    /* Màu nền của tiêu đề cột */
+    padding: 8px;
+    /* Khoảng cách bên trong ô */
+
     border: none;
 
 }
-td{
-   
+
+td {
+
     border-bottom: 1px solid rgb(160, 166, 162);
-    text-align: center; /* Canh giữa nội dung trong các ô dữ liệu */
-   
-    padding: 8px; /* Khoảng cách bên trong ô */
+    text-align: center;
+    /* Canh giữa nội dung trong các ô dữ liệu */
+
+    padding: 8px;
+    /* Khoảng cách bên trong ô */
 }
 
 a {
     text-decoration: none;
     font-size: 20px;
    
+
 
 }
 
@@ -128,5 +158,6 @@ a:hover {
 
 
 tr:hover {
-    background-color: #e6e6e6; /* Màu nền khi di chuột qua dòng */
+    background-color: #e6e6e6;
+    /* Màu nền khi di chuột qua dòng */
 }

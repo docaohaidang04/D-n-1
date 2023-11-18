@@ -55,7 +55,7 @@ function showsp($dssp)
         } else {
             $best = '';
         }
-        $link = "index.php?pg=sanphamchitiet&id=" . $id;
+        $link = "index.php?pg=sanphamchitiet&id_sp=" . $id;
         $html_dssp .= '<div class="box25 mr15">
                         ' . $best . '
                         <a href="' . $link . '">
@@ -69,10 +69,10 @@ function showsp($dssp)
     return $html_dssp;
 }
 
-function sanpham_them($ten, $gia, $giam, $hinh, $bestseller, $iddm)
+function sanpham_them($ten, $gia, $hinh, $bestseller, $iddm)
 {
-    $sql = "INSERT INTO sanpham(ten, gia, giam, hinh, bestseller,iddm) VALUES (?,?,?,?,?,?)";
-    pdo_execute($sql, $ten, $gia, $giam, $hinh, $bestseller, $iddm);
+    $sql = "INSERT INTO sanpham(ten, gia, hinh, bestseller,iddm) VALUES (?,?,?,?,?)";
+    pdo_execute($sql, $ten, $gia,  $hinh, $bestseller, $iddm);
 }
 
 
@@ -83,10 +83,10 @@ function get_sp($id)
 }
 
 
-function udhanghoa($ten, $hinh, $gia, $giam, $bestseller, $iddm, $id)
+function udhanghoa($ten, $hinh, $gia, $bestseller, $iddm, $id)
 {
-    $sql = "UPDATE sanpham SET ten=?,hinh=?,gia=?,giam=?,bestseller=?,iddm=? WHERE id=?";
-    pdo_execute($sql, $ten, $hinh, $gia, $giam, $bestseller, $iddm, $id);
+    $sql = "UPDATE sanpham SET ten=?,hinh=?,gia=?,bestseller=?,iddm=? WHERE id=?";
+    pdo_execute($sql, $ten, $hinh, $gia, $bestseller, $iddm, $id);
 }
 
 function sanpham_delete($id, $hinh)

@@ -15,7 +15,7 @@ $html_dssp_lienquan = showsp($splq);
             <div class="containerfull mr10">
                 <div class="col6 imgchitiet">
 
-                    <img src="playout/images/<?= $hinh ?>" alt="">
+                    <img src="layout/img/<?= $hinh ?>" alt="">
                 </div>
                 <div class="col6 textchitiet">
                     <h2>

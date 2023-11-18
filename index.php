@@ -1,11 +1,11 @@
 <?php
 
 session_start();
-include('dao/pdo.php');
-include('dao/sanpham.php');
-include('view/header.php');
-include('dao/danhmuc.php');
-include('dao/user.php');
+include 'dao/pdo.php';
+include 'dao/sanpham.php';
+include 'view/header.php';
+include 'dao/danhmuc.php';
+include 'dao/user.php';
 
 //data cho trang chu
 $dssp_new = dssp_moi(8);
@@ -26,7 +26,7 @@ if (!isset($_GET['pg'])) {
         case 'sanphamchitiet':
             if (isset($_GET['id'])) {
                 $id_sp = $_GET['id'];
-                $spct = get_sp_by_id($id_sp);
+                $spct = get_sp_by_id($id);
                 $dsdm = danhmuc_select_all();
                 $iddm = $spct['iddm'];
                 $splq = dssp_lienquan($iddm, $id, 4);
@@ -137,26 +137,11 @@ if (!isset($_GET['pg'])) {
             }
             break;
 
-            /* if (isset($_POST["login"])) {
-                $username = $_POST["username"];
-                $password = $_POST["password"];
-                $user = checkuser($username, $password);
-                if (isset($user) && (is_array($user)) && (count($user) > 0)) {
-                    extract($user);
-                    if ($loai == 1) {
-                        $_SESSION['s_user'] = $user;
-                        header('location: admin.php');
-                    } else {
-                        $tb = "Tài khoản này không có quyền đăng nhập vào ADMIN";
-                    }
-                } else {
-                    $tb = "Tài khoản này không tồn tại !";
-                }
-            } */
+
         default:
 
             include "view/home.php";
             break;
     }
 }
-/* include 'view/footer.php'; */
+include 'view/footer.php';

@@ -5,8 +5,9 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>SINH VIÊN</title>
+     <title>RISE</title>
      <link rel="stylesheet" href="view/style2.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
  </head>
 
  <body>
@@ -17,28 +18,28 @@
    <a href="index.php"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/T1_esports_logo.svg/1024px-T1_esports_logo.svg.png" alt="logo"></a> -->
 
      <!-- <link rel="stylesheet" href="VIEW/quantri/style.css"> -->
-     <!--  <h2>CÔNG CỤ QUẢN TRỊ WEBSITE</h2>
 
-     <div class="menuad">
 
+     <div class="menuad" style=" background-color: #0f111d; margin:0px;">
+         <img src="layout/img/logo1.jpg" alt="" style="width: 150px;">
 
 
          <nav>
-             <a href="admin.php">Trang chủ</a></li>
+
              <a href="admin.php?pg=loai">Danh mục</a></li>
              <a href="admin.php?pg=sanpham">Sản phẩm</a></li>
              <a href="admin.php?pg=user">Tài khoản</a></li>
-             <a href="admin.php?pg=loai_user">Loại tài khoản</a></li>
+
              <a href="admin.php?pg=">Bình luận</a></li>
              <a href="admin.php?pg=logout">Đăng xuất</a></li>
              <!-- <a href="">ACCESSORIES</a></li>
                 <a href="">COLLECTIBLES</a></li>
                 <a href="">COLLABORATION</a></li>
                 <a href="">EVENT</a></li> -->
-     </nav>
+         </nav>
 
 
-     <!-- <div class="right">
+         <!-- <div class="right">
                     <a href="./view/dangnhap.php">LOGIN</a>
                     <a href="">JOIN</a>
                     <a href="./index.php?page=cart">CART</a>
