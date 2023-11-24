@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="view/form.css">
+<link rel="stylesheet" href="view/css/form.css">
 <br>
 <div class="form_lo">
     <p class="dk">ĐĂNG KÝ</p>

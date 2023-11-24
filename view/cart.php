@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../view/cart.css">
+<link rel="stylesheet" href="../view/css/cart.css">
 <div class="cart">
     <div class="cart_left">
         <p>GIỎ HÀNG</p>

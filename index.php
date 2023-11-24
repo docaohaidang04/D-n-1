@@ -77,7 +77,7 @@ if (!isset($_GET['pg'])) {
                     if ($vaitro == 1) {
                         $_SESSION['s_user'] = $kq;
 
-                        header('location: admin.php');
+                        header('location: ./admin.php');
                     } else if ($vaitro == 0) {
                         $_SESSION['s_user'] = $kq;
                         header('location: index.php');
@@ -127,7 +127,6 @@ if (!isset($_GET['pg'])) {
                 $email = $_POST["email"];
                 $phone = $_POST["phone"];
                 $vaitro = 0;
-                $id_us = $_POST["id_us"];
                 //Xử lý
                 udmyacc($ten, $username, $phone, $email, $password, $vaitro, $id_us);
             }

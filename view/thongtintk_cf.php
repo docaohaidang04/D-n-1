@@ -6,7 +6,7 @@
         extract($userinfo);
     }
 ?>
-<link rel="stylesheet" href="view/form.css">
+<link rel="stylesheet" href="view/css/form.css">
 <br>
 <div class="form_lo">
     <p class="dk">THÔNG TIN TÀI KHOẢN ĐÃ ĐƯỢC CẬP NHẬT</p>

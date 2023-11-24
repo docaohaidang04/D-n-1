@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../view/bill.css">
+<link rel="stylesheet" href="../view/css/bill.css">
 <div class="dh_top">
      <h2>ĐƠN HÀNG CỦA BẠN</h2>
      <div class="border">
@@ -77,7 +77,10 @@
                     <p>Phí vận chuyển:</p>
                     <p>10.000</p>
                </div>
-
+               <div class="thongtin_sp_2_thanhtien">
+                    <p>Giảm giá:</p>
+                    <p>199.000</p>
+               </div>
                <div class="thongtin_sp_2_togthanhtoan">
                     <p>Tổng thanh toán:</p>
                     <p>199.000</p>

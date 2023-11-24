@@ -3,7 +3,7 @@
         extract($_SESSION['s_user']);
     }
 ?>
-<link rel="stylesheet" href="view/form.css">
+<link rel="stylesheet" href="view/css/form.css">
 <br>
 <div class="form_lo">
     <p class="dk">THÔNG TIN TÀI KHOẢN</p>
@@ -30,7 +30,7 @@
                 <input type="text" id="password"  value="<?=$password?>" name="password" placeholder="Mật khẩu">
             </div>
         
-            <div class="form_sm">
+            <div class="form_sm" style="padding-bottom:20px;">
                 <input type="hidden" name="id" value="<?=$id?>">
                 <input type="submit" name="capnhat" value="Cập nhật">
             </div>   

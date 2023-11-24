@@ -1,0 +1,46 @@
+.lichsu{
+    display: flex;
+    flex-direction: column;
+}
+
+.lichsu p {
+    color: #000;
+
+    font-family: Space Grotesk;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+
+    padding-left: 10px;
+    color: #444444;
+    border-left: 4px red solid;
+}
+
+th, td{
+    padding: 10px;
+    border: 1px #666666 solid;
+    text-align: center;
+}
+
+.lichsu table{
+    border-collapse: collapse;
+}
+.lichsu table tr th{
+    background-color: #CCC;
+    
+}
+
+.lichsu table tr td .a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.bang{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+.ls{
+    padding-left: 200px;
+}

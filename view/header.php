@@ -28,8 +28,8 @@ if(isset($_SESSION['s_user']) && is_array($_SESSION['s_user']) && count($_SESSIO
      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
      <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
      </script>
-     <link rel="stylesheet" href="view/style.css">
-     <link rel="stylesheet" href="view/chitietsp.css">
+     <link rel="stylesheet" href="view/css/style.css">
+     <link rel="stylesheet" href="view/css/chitietsp.css">
 </head>
 
 <body>
