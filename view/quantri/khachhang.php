@@ -7,12 +7,14 @@ foreach ($showus as $value) {
     $kq .= '<tr>
         <td>' . $stt . '</td>
         <td>' . $username . '</td>
+        <td>' . md5($password) . '</td>
         <td>' . $phone . '</td>
         <td>' . $email . '</td>
         <td>' . $vaitro . '</td>
         <td><a href="admin.php?pg=uduser&id=' . $id_us . '"><i class="fas fa-edit" style="color: #ff2600;"></i></a> </td>
     </tr>';
 }
+
 ?>
 
 
@@ -57,7 +59,7 @@ foreach ($showus as $value) {
             <tr>
                 <th>STT</th>
                 <th>Tên</th>
-                <!-- <th>Pass</th> -->
+                <th>Pass</th>
                 <th>Phone</th>
                 <th>Mail</th>
                 <th>Vai trò</th>

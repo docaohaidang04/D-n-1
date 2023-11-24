@@ -10,7 +10,7 @@ include 'dao/user.php';
 //data cho trang chu
 $dssp_new = dssp_moi(8);
 $dssp_best = dssp_best(3);
-/* $dssp_view = dssp_view(4); */
+
 
 if (!isset($_GET['pg'])) {
 
@@ -25,12 +25,13 @@ if (!isset($_GET['pg'])) {
     switch ($_GET['pg']) {
         case 'sanphamchitiet':
             if (isset($_GET['id'])) {
-                $id_sp = $_GET['id'];
+                $id = $_GET['id'];
                 $spct = get_sp_by_id($id);
                 $dsdm = danhmuc_select_all();
                 $iddm = $spct['iddm'];
                 $splq = dssp_lienquan($iddm, $id, 4);
-                include "view/sanphamchitiet.php";
+                $spnho = dsspnho($iddm, $id, 4);
+                include "view/ctsp.php";
             } else {
                 include "view/home.php";
             }
@@ -61,8 +62,7 @@ if (!isset($_GET['pg'])) {
 
             //dangky dangnhap
         case 'dangky':
-            include "view/dangky.php";
-
+            include "view/register.php";
             break;
         case 'login':
             //input
@@ -74,11 +74,11 @@ if (!isset($_GET['pg'])) {
                 $kq = checkuser($username, $password);
                 if (is_array($kq) && (count($kq))  && (count($kq) > 0)) {
                     extract($kq);
-                    if ($loai == 1) {
+                    if ($vaitro == 1) {
                         $_SESSION['s_user'] = $kq;
 
-                        header('location: ./admin.php');
-                    } else if ($loai == 0) {
+                        header('location: admin.php');
+                    } else if ($vaitro == 0) {
                         $_SESSION['s_user'] = $kq;
                         header('location: index.php');
                     }
@@ -86,7 +86,7 @@ if (!isset($_GET['pg'])) {
                 } else {
                     $tb = "Tài khoản hoặc mật khẩu không tồn tại !";
                     $_SESSION['tb_dangnhap'] = $tb;
-                    include 'view/dangnhap.php';
+                    include 'view/login.php';
                 }
             }
 
@@ -94,7 +94,7 @@ if (!isset($_GET['pg'])) {
 
             break;
         case 'dangnhap':
-            include 'view/dangnhap.php';
+            include 'view/login.php';
             break;
 
         case 'logout':
@@ -106,34 +106,36 @@ if (!isset($_GET['pg'])) {
         case 'adduser':
             //xac dinh gia tri dau vao (input)
             if (isset($_POST["dangky"]) && ($_POST["dangky"])) {
+
+                $ten = $_POST["ten"];
                 $username = $_POST["username"];
                 $password = $_POST["password"];
-                $email = $_POST["email"];
+                $phone = $_POST["phone"];
 
                 //xu ly
-                user_insert($username, $password, $email);
+                user_insert($ten, $username, $password, $phone);
             }
             //
-            include "view/dangnhap.php";
+            include "view/login.php";
             break;
             //chinh sua ho so
         case 'updateuser':
             if (isset($_POST["capnhat"]) && ($_POST["capnhat"])) {
+                $ten = $_POST["ten"];
                 $username = $_POST["username"];
                 $password = $_POST["password"];
                 $email = $_POST["email"];
-                $diachi = $_POST["diachi"];
                 $phone = $_POST["phone"];
-                $loai = 0;
+                $vaitro = 0;
                 $id_us = $_POST["id_us"];
                 //Xử lý
-                udmyacc($username, $phone, $email, $password, $diachi, $loai, $id_us);
+                udmyacc($ten, $username, $phone, $email, $password, $vaitro, $id_us);
             }
-            include 'view/udmyaccount.php';
+            include 'view/thongtintk_cf.php';
             break;
         case 'myaccount':
             if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
-                include 'view/myaccount.php';
+                include 'view/thongtintk.php';
             }
             break;
 

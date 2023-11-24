@@ -3,11 +3,12 @@ $kq = '';
 $stt = 0;
 foreach ($showdm as $value) {
     $stt++;
+    extract($value);
     $kq .= ' <tr>
         <td>' . $stt . '</td>
-        <td>' . $value['ten'] . '</td>
-        <td>' . $value['ma'] . '</td>
-        <td><a href="admin.php?pg=loaisua&id=' . $value['id'] . '"><i class="fas fa-edit" style="color: #ff2600;"></i></a> <a href="admin.php?pg=dmxoa&id=' . $value['id'] . '"><i class="fas fa-trash-alt" style="color: #fa3605;"></i></a></td>
+        <td>' . $ten. '</td>
+        <td>' . $ma. '</td>
+        <td><a href="admin.php?pg=loaisua&id=' . $id. '"><i class="fas fa-edit" style="color: #ff2600;"></i></a> <a href="admin.php?pg=dmxoa&id=' . $id. '"><i class="fas fa-trash-alt" style="color: #fa3605;"></i></a></td>
     </tr>';
 }
 if ((isset($_GET['id'])) && ($_GET['id'] > 0)) {

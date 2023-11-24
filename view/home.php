@@ -28,13 +28,13 @@ $html_dm = showdm($dsdm);
             <?= $html_dssp_best; ?>
         </div>
 
-        <div class="containerfull mr30" style="text-align: center; font-size:25px">
-            <h3>ÁO</h3>
+        <div class="containerfull mr30">
+            <h3 style="text-align: center; font-size:30px">ÁO</h3>
             <?= $html_dssp_new; ?>
         </div>
 
-        <div class="containerfull mr30" style="text-align: center; font-size:25px">
-            <h3>QUẦN</h3>
+        <div class="containerfull mr30">
+            <h3 style="text-align: center; font-size:25px">QUẦN</h3>
         </div>
 
 

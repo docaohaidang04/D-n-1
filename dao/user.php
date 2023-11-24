@@ -3,16 +3,16 @@ require_once 'pdo.php';
 
 
 //dang ky
-function user_insert($username, $password, $email)
+function user_insert($ten, $username, $password, $phone)
 {
-    $sql = "INSERT INTO user (username, password, email) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO user (ten, username, password, phone) VALUES (?, ?, ?, ?)";
     //Đây là một phần quan trọng của câu lệnh, và nó đang thể hiện giá trị sẽ được thêm vào các cột tương ứng. 
     //Tuy nhiên, thay vì cung cấp giá trị cụ thể, bạn thấy dấu hỏi chấm hỏi (?) trong câu lệnh. 
     //Dấu chấm hỏi này là các tham số, và giá trị của chúng sẽ được cung cấp sau đó.
     //Dấu chấm hỏi (?) trong SQL injection có thể liên quan đến việc sử dụng các tham số để thay thế giá trị thực tế trong câu lệnh SQL. 
     //Cách này thường được sử dụng để bảo vệ ứng dụng khỏi SQL injection.
     //Sử dụng tham số là một phần quan trọng trong việc ngăn chặn SQL injection và bảo vệ cơ sở dữ liệu khỏi các cuộc tấn công này.
-    pdo_execute($sql, $username, $password, $email);
+    pdo_execute($sql, $ten, $username, $password, $phone);
 }
 //dang nhap
 function checkuser($username, $password)
@@ -66,10 +66,10 @@ function showus()
 
 
 
-function udmyacc($username, $phone, $email, $password, $diachi, $vaitro, $id_us)
+function udmyacc($ten, $username, $phone, $email, $password, $vaitro, $id_us)
 {
-    $sql = "UPDATE user SET username=?,phone=?,email=?,password=?,diachi=?,vaitro=? WHERE id_us=?";
-    pdo_execute($sql, $username, $phone, $email, $password, $diachi, $vaitro, $id_us);
+    $sql = "UPDATE user SET ten=?, username=?,phone=?,email=?,password=?, vaitro=? WHERE id_us=?";
+    pdo_execute($sql, $ten, $username, $phone, $email, $password, $vaitro, $id_us);
 }
 
 // function khach_hang_select_by_id($ma_kh){

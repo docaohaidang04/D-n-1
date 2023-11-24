@@ -27,7 +27,13 @@ function dssp_best($limi)
 
 function dssp_lienquan($iddm, $id, $limi)
 {
-    $sql = "SELECT * FROM sanpham WHERE iddm=? and id<>?" . $limi;
+    $sql = "SELECT * FROM sanpham WHERE iddm=? AND id<>? ORDER BY id DESC LIMIT " . $limi;
+    return pdo_query($sql, $iddm, $id);
+}
+// doi hinh trang chi tiet san pham
+function dsspnho($iddm, $id, $limi)
+{
+    $sql = "SELECT hinh, id FROM sanpham WHERE iddm=? AND id<>? ORDER BY id DESC LIMIT " . $limi;
     return pdo_query($sql, $iddm, $id);
 }
 
@@ -55,19 +61,41 @@ function showsp($dssp)
         } else {
             $best = '';
         }
-        $link = "index.php?pg=sanphamchitiet&id_sp=" . $id;
+        $link = "index.php?pg=sanphamchitiet&id=" . $id;
         $html_dssp .= '<div class="box25 mr15">
                         ' . $best . '
                         <a href="' . $link . '">
-                         <img src="layout/img/' . $hinh . '" alt="">
+                         <img class="hinh" src="layout/img/' . $hinh . '" alt="">
                         </a>
                         <p>' . $ten . '</p>
+                        <div class="gia_dathang">
                         <span class="price">' . $gia . '  đ</span>
-                        <button class="my-button">Đặt hàng</button>
+                        <a href=""><img src="layout/img/ion_cart.svg" alt="" srcset="" ></a>
+                        </div>
                         </div>';
     }
     return $html_dssp;
 }
+/* function showspnho($dssp)
+{
+    $html_dssp = '';
+    foreach ($dssp as $sp) {
+        extract($sp);
+        /* if ($bestseller == 1) {
+            $best = '<div class="best"></div>';
+        } else {
+            $best = '';
+        } */
+/*   $link = "index.php?pg=sanphamchitiet&id=" . $id; */
+/* $html_dssp .= '<div class="chitiet_full">
+                        <a href="">
+                         <img id="" src="layout/img/' . $hinh . '" alt="">
+                        </a>
+                        </div>';
+    }
+    return $html_dssp;
+} */
+
 
 function sanpham_them($ten, $gia, $hinh, $bestseller, $iddm)
 {

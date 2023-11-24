@@ -1,6 +1,7 @@
 body{
    padding: 0;
    margin: 0;
+   font-family:Space Grotesk ;
 }
 .hdtop{
    display: flex;
@@ -147,6 +148,7 @@ h2 {
    color: rgb(238, 63, 92);
 }
 .icon{
+   display: flex;
    padding-left: 300px;
    padding-top: 30px;
 }
@@ -156,7 +158,9 @@ h2 {
 .user{
    position: relative;
    bottom: 5px;
+   padding-top: 5px;
 }
+
 
 /* TÌM KIẾM */
 .timkiem{
@@ -307,6 +311,16 @@ color:#993300;
    width: calc(25% - 30px);
    position: relative;
 }
+.gia_dathang{
+   display: flex;
+   justify-content: space-between;
+   width: 270px;
+}
+.gia_dathang a img{
+   width: 30px;
+   height: 30px;
+
+}
 .boxsp {
    float: left;
    width: 25%;
@@ -353,22 +367,36 @@ color:#993300;
    border-radius: 10px;
    box-shadow: 0px 0px 10px #999999;
 }
-.box25 img {
+.box25 .hinh {
    display: flex;
-   gap: 40px;
    max-width: 390px;
    max-height: 270px;
    border-radius: 10px;
    box-shadow: 0px 0px 10px #999999;
-   margin: 30px 0px;
+   margin-bottom: 15px;
    
 }
 
 .box25 p{
-   text-align: center;
+   /* text-align: center;
    color:#000000;
-   font-size: 15px;
-   margin: 5px;
+   font-size: 20px;
+   font-weight: bold;
+   margin: 5px; */
+   display: flex;
+   width: 243.9px;
+   height: 18px;
+   flex-direction: column;
+   justify-content: center;
+   flex-shrink: 0;
+   color: #000;
+   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   font-family: Space Grotesk;
+   font-size: 13.891px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   text-transform: uppercase;
 }
 .box25{
    padding-bottom: 20px;
@@ -382,13 +410,18 @@ color:#993300;
    border-left: 3px solid  #993300;
 }
 
-section,
-.mr30 {
+/* section, */
+/* .mr30 {
    margin: 30px 0px;
+} */
+/* .mr30{
+   display: flex;
+   justify-content: space-between;
 }
-
+ */
 .mr15 {
-   margin-right: 70px;
+   margin-right: 10px;
+   
 }
 
 .mr5pt {
@@ -433,6 +466,11 @@ section,
    float: left;
    width: 60%;
 }
+.boxright .mr15{
+   margin-right: 80px;
+}
+
+
 
 .boxleft_bgw_left {
    float: right;
@@ -447,7 +485,7 @@ section,
 } */
 
 
-button {
+.box25 button{
    color: black;
    font-size: 13pt;
    font-weight: bold;
@@ -458,10 +496,10 @@ button {
    background-color: white;
    margin-bottom: 20px;
 }
-button {
+.box25 button {
    margin-bottom: 20px;
 }
-button:hover{
+.box25 button:hover{
    color:red;
    background-color: #000000;
    
@@ -481,13 +519,25 @@ h2 {
 }
 
 .price {
-   text-align: center;
+   /* text-align: center;
    color: #993300;
    font-size: 12pt;
    float: left;
    width: 100%;
-   padding: 8px 0px;
-}
+   padding: 8px 0px; */
+   display: flex;
+   width: 60.642px;
+   height: 24px;
+   flex-direction: column;
+   justify-content: center;
+   flex-shrink: 0;
+   color: #EB5757;
+   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 24px; /* 171.429% */
+   }
 
 /*  a {
    color: #000;
@@ -613,7 +663,18 @@ label {
 }
 .danhmuc{
    text-align: center;
-   
+}
+
+.danhmucsp{
+   display: flex;
+   flex-direction: column;
+   width: 100px;
+
+}
+.danhmucsp a{
+   padding-top: 10px;
+   border-bottom: 3px solid black;
+   font-size: 20px;
 }
 
 /* FOOTER */
@@ -724,10 +785,3 @@ form .submit:hover{
 .containerfull .container .mr30 h1{
    text-align: center; font-family:Arial, Helvetica, sans-serif
 }
-
-
-
-
-
-
-

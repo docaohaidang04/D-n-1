@@ -33,7 +33,10 @@ $html_dssp = showsp($dssp);
     <div class="container">
         <div class="boxleft mr2pt menutrai">
             <h2>DANH MỤC</h2><br><br>
-            <?= $html_dm; ?>
+            <div style="display: flex;" class="danhmucsp">
+                <?= $html_dm; ?>
+            </div>
+
         </div>
         <div class="boxright">
             <h2>SẢN PHẨM</h2><br>

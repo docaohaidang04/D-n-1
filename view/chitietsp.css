@@ -1,0 +1,264 @@
+.dsspnho-image {
+    /* Thêm các thiết lập CSS bạn muốn cho hình ảnh khi chưa được chọn */
+    border: 2px solid transparent;
+}
+
+.dsspnho-image.selected {
+    /* Các thiết lập CSS cho hiệu ứng viền khi hình ảnh được chọn */
+    border-color: black; /* Màu viền (thay đổi theo ý muốn) */
+}
+.ctsp_top{
+    display: flex;
+    justify-content: space-around;
+    background: #f4f3f3;
+    width: 1200px;
+    margin-left: 148px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.img_chitiet{
+    display: flex;
+    flex-direction: column;
+}
+.img_chitiet img{
+    width: 500px;
+    height: 440px;
+    padding-top: 25px;
+}
+
+.chitiet_full {
+    display: flex;
+    margin-top: 5px ;
+    margin-bottom: 5px;
+    gap: 40px;
+
+}
+.chitiet_full img{
+    width: 100px;
+    height: 100px;
+}
+.sp_right .tensp{
+    display: flex;
+    width: 577px;
+    height: 34px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #212529;
+    font-family: Space Grotesk;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30.34px; /* 116.692% */
+    letter-spacing: -0.406px;
+}
+
+.sp_right .conhang{
+
+    display: flex;
+    width: 65.38px;
+    height: 18px;
+    flex-direction: column;
+    justify-content: center;
+
+    color: #00B156;
+    font-family: Space Grotesk;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 171.429% */
+    letter-spacing: 0.131px;
+}
+
+.sp_right .gia{
+    display: flex;
+    width: 121.306px;
+    height: 34px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Space Grotesk;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px; /* 69.231% */
+}
+
+.sp_right .kichco{
+    display: flex;
+    width: 58.298px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Space Grotesk;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.15px;
+}
+
+.sp_right button{
+    width: 45px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border: 1px solid #EEE;
+    background: #FFF;
+}
+
+.sp_right button:hover{
+    font-weight: bold;
+    color: red;
+    border:2px solid black;
+    border-radius: 10px;
+}
+
+.sp_right .soluong{
+    display: flex;
+    width: 70.037px;
+    height: 30px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Space Grotesk;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.15px;
+}
+/* .sl{
+    display: flex;
+}
+.sl input{
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.beautiful-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    outline: none;
+    width: 200px;
+}
+
+.beautiful-input:focus {
+    border-color: #2ecc71;
+} */
+
+.sl{
+    display: flex;
+}
+.sl .sl_sp{
+    margin-top: 15px;
+    background-color: white;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.sl button{
+    width: 30px;
+    height: 30px;
+    /* justify-content: center;
+    align-items: center; */
+    border: 1px solid #EEE;
+    background: #FFF;
+}
+
+.sp_right .muangay{
+    background-color: black;
+    color: #EEE;
+    width: 220px;
+    height: 50px;
+    color: #FFF;
+    text-align: center;
+    font-family: Space Grotesk;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px; /* 150% */
+    text-transform: uppercase;
+}
+.sp_right .themgh{
+    width: 220px;
+    height: 50px;
+    background: #027794;
+    color: #FFF;
+    text-align: center;
+    font-family: Space Grotesk;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px; /* 150% */
+    text-transform: uppercase;
+    margin-left: 20px;
+
+}
+.sp_right .themgh img{
+    position: relative;
+    top: 5px;
+}
+.muangay, .themgh{
+    margin-top: 20px;
+}
+.muangay:hover{
+    background: white;
+    border: 1px solid #000;
+    color: black;
+}
+.themgh:hover{
+    background: white;
+    border: 1px solid #027794;
+    color:#027794;
+}
+
+/* MOTA */
+.ctsp_mota{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+    margin-left: 148px;
+}
+.ctsp_mota h2{
+    border-bottom: 3px solid black;
+    width: 180px;
+    font-size: 20px;
+}
+/* DANH GIA */
+.ctsp_danhgia{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 1200px;
+    margin-left: 148px;
+}
+.ctsp_danhgia h2{
+    border-bottom: 3px solid black;
+    width: 180px;
+    font-size: 20px;
+}
+
+.splq {
+    margin-right: 70px;
+    display: flex;
+    padding-right: 100px;
+    display: flex;
+    
+    justify-content: center;
+    width: 1200px;
+    margin-left: 148px;
+}
+
+ 
+ 
+
