@@ -3,13 +3,29 @@ session_start();
 ob_start();
 include_once 'view/headerad.php';
 include_once './dao/user.php';
+include_once './dao/bill.php';
 include_once './dao/danhmuc.php';
 include_once './dao/sanpham.php';
+include_once './dao/binhluan.php';
 include_once './dao/pdo.php';
+include_once './dao/donhang.php';
 
 if (!isset($_GET['pg'])) {
 } else {
     switch ($_GET['pg']) {
+
+        case 'qldh':
+            if (isset($_GET['id_us']) && ($_GET['id_us'] > 0)) {
+                $id_us = $_GET['id_us'];
+            }
+
+            $showb = showb($id_us);
+            include 'view/quantri/qldh.php';
+
+
+
+            break;
+
         case 'user':
             //Show khách hàng
             $showus = showus();
@@ -100,8 +116,8 @@ if (!isset($_GET['pg'])) {
         case 'spxoa':
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $hinh = $_GET['hinh'];
-                sanpham_delete($id, $hinh);
+                $hinh_sp = $_GET['hinh_sp'];
+                sanpham_delete($id, $hinh_sp);
             }
 
             // lấy dữ liệu hiển thị cho select opp
@@ -113,20 +129,21 @@ if (!isset($_GET['pg'])) {
             break;
 
         case 'spthem':
-            $ten = $_POST['ten'];
+            $ten_sp = $_POST['ten_sp'];
             $gia = $_POST['gia'];
+            $mota = $_POST['mota'];
 
             $bestseller = $_POST['bestseller'];
             $iddm = $_POST['iddm'];
-            if (isset($_FILES['hinh']['name']) && ($_FILES['hinh']['name']) != "") {
+            if (isset($_FILES['hinh_sp']['name']) && ($_FILES['hinh_sp']['name']) != "") {
                 $target_dir = "layout/img/";
-                $target_file = $target_dir . basename($_FILES['hinh']['name']);
-                move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file);
-                $hinh = $target_file;
+                $target_file = $target_dir . basename($_FILES['hinh_sp']['name']);
+                move_uploaded_file($_FILES['hinh_sp']['tmp_name'], $target_file);
+                $hinh_sp = $target_file;
             } else {
-                $hinh = ""; //gán giá trị để lưu trong hình table san pham 
+                $hinh_sp = ""; //gán giá trị để lưu trong hình table san pham 
             }
-            sanpham_them($ten, $gia, $hinh, $bestseller, $iddm);
+            sanpham_them($ten_sp, $gia, $hinh_sp, $bestseller, $mota, $iddm);
             // lấy dữ liệu hiển thị cho select opp
             $showdm = danhmuc_select_all();
             $kq_op = showoption_spqt($showdm);
@@ -145,23 +162,24 @@ if (!isset($_GET['pg'])) {
             break;
         case 'capnhatsp':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $ten = $_POST['ten'];
+                $ten_sp = $_POST['ten_sp'];
                 $gia = $_POST['gia'];
+                $mota = $_POST['mota'];
                 $bestseller = $_POST['bestseller'];
                 $iddm = $_POST['iddm'];
                 $id = $_POST['id'];
-                $hinh = $_POST['hinh'];
-                if (isset($_FILES['hinh']['name']) && ($_FILES['hinh']['name']) != "") {
+                $hinh_sp = $_POST['hinh_sp'];
+                if (isset($_FILES['hinh_sp']['name']) && ($_FILES['hinh_sp']['name']) != "") {
                     // xóa file hình cũ trong thư mục
-                    if (file_exists($hinh)) unlink($hinh);
+                    if (file_exists($hinh_sp)) unlink($hinh_sp);
                     // up hinh mới
                     $target_dir = "layout/img/";
-                    $target_file = $target_dir . basename($_FILES['hinh']['name']);
-                    move_uploaded_file($_FILES['hinh']['tmp_name'], $target_file);
-                    $hinh = $target_file;
+                    $target_file = $target_dir . basename($_FILES['hinh_sp']['name']);
+                    move_uploaded_file($_FILES['hinh_sp']['tmp_name'], $target_file);
+                    $hinh_sp = $target_file;
                 }
             }
-            udhanghoa($ten, $hinh, $gia, $bestseller, $iddm, $id);
+            udhanghoa($ten_sp, $hinh_sp, $gia, $bestseller, $mota, $iddm, $id);
             // lấy dữ liệu hiển thị cho select opp
             $showdm = danhmuc_select_all();
             $kq_op = showoption_spqt($showdm);
@@ -174,6 +192,29 @@ if (!isset($_GET['pg'])) {
                 unset($_SESSION['s_user']);
             }
             header('location: ./index.php');
+            break;
+        case 'binhluan':
+            $showbl = load_bl(0);
+            include 'view/quantri/binhluan.php';
+            break;
+        case 'chitietbinhluan':
+            if (isset($_GET['idpro']) && ($_GET['idpro'] > 0)) {
+                $idpro = $_GET['idpro'];
+            }
+            $showctbl = load_blct($idpro);
+            include 'view/quantri/chitietbinhluan.php';
+            break;
+        case 'chitietbinhluanxoa':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                binh_luan_delete($id);
+            }
+            $showbl = load_bl(0);
+            include 'view/quantri/binhluan.php';
+            break;
+        case 'exit':
+            $showbl = load_bl(0);
+            include 'view/quantri/binhluan.php';
             break;
 
         default:

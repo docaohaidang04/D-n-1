@@ -109,7 +109,12 @@ th, td{
     font-weight: bold;
     transform: scale(1.1);
 }
-
+.form_fott{
+    display: flex;
+}
+.form_fo2{
+    display: flex;
+}
 .cart table tr td a{
     text-decoration: none;
     font-weight: bold;

@@ -9,7 +9,7 @@ function showspnho($spnho)
 
     foreach ($spnho as $sp) {
         extract($sp);
-        $html_dsspnho .= '<img class="dsspnho-image" data-id="' . $id . '" data-hinh="' . $hinh . '" src="layout/img/' . $hinh . '" alt="">';
+        $html_dsspnho .= '<img class="dsspnho-image" data-id="' . $id . '" data-hinh="' . $hinh_sp . '" src="' . $hinh_sp . '" alt="">';
     }
 
     return $html_dsspnho;
@@ -28,7 +28,7 @@ $dssp = show_sp();
     <div class="ctsp_top">
         <div class="sp_left">
             <div class="img_chitiet">
-                <img id="mainImage" src="layout/img/<?= $hinh ?>" alt="">
+                <img id="mainImage" src="<?= $hinh_sp ?>" alt="">
             </div>
             <div class="chitiet_full">
                 <!-- <img src="layout/img/ao1.jpg" alt="" onclick="slide(0)">
@@ -39,9 +39,9 @@ $dssp = show_sp();
             </div>
         </div>
         <div class="sp_right">
-            <p class="tensp"><?= $ten ?></p>
+            <p class="tensp"><?= $ten_sp ?></p>
             <p class="conhang">Còn hàng</p>
-            <p class="gia"><?= $gia ?>đ</p>
+            <p class="gia"><?= number_format($gia, 0, ",") ?>đ</p>
             <!-- HTML -->
             <p class="kichco">Kích cỡ</p>
             <button class="bt" onclick="highlightButton(this, 'S')">S</button>
@@ -54,13 +54,42 @@ $dssp = show_sp();
             <div class="sl">
                 <p class="soluong">Số lượng</p>
                 <div class="sl_sp">
-                    <button id="giamSoLuong">-</button>
+                    <!-- <button id="giamSoLuong">-</button>
                     <span id="soLuongSanPham">1</span>
-                    <button id="tangSoLuong">+</button>
+                    <button id="tangSoLuong">+</button> -->
+                    <input type="number" name="soluongInput" id="soluongInput" min="1" max="10" value="<?= $sl ?>"
+                        data-index="<?= $index ?>">
+
                 </div>
             </div>
-            <button type="submit" class="muangay">MUA NGAY</button>
-            <button type="submit" class="themgh">THÊM GIỎ HÀNG</button>
+
+
+            <?php
+            $kq = "";
+            $kq .= '<form action="index.php?pg=muangay" method="post"> 
+                <input type="hidden" name="hinh_sp" value="' . $hinh_sp . '">
+                <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
+                <input type="hidden" name="gia" value="' . $gia . '">
+                <input type="hidden" name="idpro" value="' . $id . '">
+                  <td id="soLuongTd"><?= $sl ?></td>
+            <button type="submit" class="muangay" name="dathang">MUA NGAY</button>
+            </form>';
+            echo $kq;
+            ?>
+
+            <?php
+            $kq = "";
+            $kq .= '<form action="index.php?pg=giohang" method="post"> 
+                <input type="hidden" name="hinh_sp" value="' . $hinh_sp . '">
+                <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
+                <input type="hidden" name="gia" value="' . $gia . '">
+                <input type="hidden" name="idpro" value="' . $id . '">
+
+
+            <button type="submit" class="themgh" name="dathang">THÊM GIỎ HÀNG</button>
+            </form>';
+            echo $kq;
+            ?>
         </div>
     </div>
 
@@ -93,11 +122,44 @@ $dssp = show_sp();
 
         </p>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+    document.addEventListener("input", function(event) {
+        if (event.target.classList.contains("soluongInput")) {
+            var inputValue = event.target.value;
+            var index = event.target.dataset.index;
+            document.getElementById("soluongTd" + index).textContent = inputValue;
+        }
+    });
+    </script>
+    <script>
+    // Lắng nghe sự kiện khi giá trị số lượng thay đổi
+    document.addEventListener("input", function(event) {
+        if (event.target.classList.contains("soluongInput")) {
+            // Lấy giá trị từ ô input
+            var inputValue = event.target.value;
+
+            // Lấy index của dòng trong giỏ hàng từ thuộc tính data
+            var index = event.target.dataset.index;
+
+            // Cập nhật giá trị số lượng vào thẻ td tương ứng
+            document.getElementById("soluongTd" + index).textContent = inputValue;
+        }
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $("#binhluan").load("view/binhluan.php", {
+            idpro: <?= $id ?>
+        });
+    });
+    </script>
+
+    <div class="ctsp_danhgia" id="binhluan">
+        <!-- <h2>ĐÁNH GIÁ</h2> -->
 
 
-    <div class="ctsp_danhgia">
-        <h2>ĐÁNH GIÁ</h2>
-        <iframe></iframe>
 
 
     </div>
@@ -118,112 +180,112 @@ $dssp = show_sp();
 
 </div>
 <script>
-    const soLuongSanPhamElement = document.getElementById("soLuongSanPham");
-    const tangSoLuongButton = document.getElementById("tangSoLuong");
-    const giamSoLuongButton = document.getElementById("giamSoLuong");
+const soLuongSanPhamElement = document.getElementById("soLuongSanPham");
+const tangSoLuongButton = document.getElementById("tangSoLuong");
+const giamSoLuongButton = document.getElementById("giamSoLuong");
 
-    let soLuong = 0;
+let soLuong = 0;
 
-    function capNhatSoLuong() {
-        soLuongSanPhamElement.textContent = soLuong;
-    }
+function capNhatSoLuong() {
+    soLuongSanPhamElement.textContent = soLuong;
+}
 
-    tangSoLuongButton.addEventListener("click", function() {
-        soLuong++;
+tangSoLuongButton.addEventListener("click", function() {
+    soLuong++;
+    capNhatSoLuong();
+});
+
+giamSoLuongButton.addEventListener("click", function() {
+    if (soLuong > 0) {
+        soLuong--;
         capNhatSoLuong();
-    });
-
-    giamSoLuongButton.addEventListener("click", function() {
-        if (soLuong > 0) {
-            soLuong--;
-            capNhatSoLuong();
-        }
-    });
-
-
-
-    // slider
-    /*  var slider = document.querySelector(".imgslider");
-     var arr = [
-         "layout/img/<?= $hinh ?>",
-         "layout/img/ao2.jpg",
-         "layout/img/ao3.jpg",
-         "layout/img/ao1.jpg"
-     ];
-     var idx = 0;
-
-     function slide(index) {
-         idx = index;
-         slider.src = arr[idx];
-     } */
-
-    // button
-
-    var lastClickedButton = null;
-
-    function highlightButton(clickedButton, size) {
-        // Loại bỏ lớp 'highlight' khỏi nút cuối cùng đã được nhấp
-        if (lastClickedButton !== null) {
-            lastClickedButton.classList.remove('highlight');
-        }
-
-        // Thêm lớp 'highlight' cho nút mới được nhấp
-        clickedButton.classList.add('highlight');
-
-        // Cập nhật nút cuối cùng được nhấp
-        lastClickedButton = clickedButton;
-
-        // Thực hiện các hành động bổ sung nếu cần dựa trên kích cỡ đã chọn (tùy chọn)
-        console.log('Kích cỡ đã chọn:', size);
     }
+});
+
+
+
+// slider
+/*  var slider = document.querySelector(".imgslider");
+ var arr = [
+     "layout/img/<?= $hinh ?>",
+     "layout/img/ao2.jpg",
+     "layout/img/ao3.jpg",
+     "layout/img/ao1.jpg"
+ ];
+ var idx = 0;
+
+ function slide(index) {
+     idx = index;
+     slider.src = arr[idx];
+ } */
+
+// button
+
+var lastClickedButton = null;
+
+function highlightButton(clickedButton, size) {
+    // Loại bỏ lớp 'highlight' khỏi nút cuối cùng đã được nhấp
+    if (lastClickedButton !== null) {
+        lastClickedButton.classList.remove('highlight');
+    }
+
+    // Thêm lớp 'highlight' cho nút mới được nhấp
+    clickedButton.classList.add('highlight');
+
+    // Cập nhật nút cuối cùng được nhấp
+    lastClickedButton = clickedButton;
+
+    // Thực hiện các hành động bổ sung nếu cần dựa trên kích cỡ đã chọn (tùy chọn)
+    console.log('Kích cỡ đã chọn:', size);
+}
 </script>
 
 <script>
-    // Hàm JavaScript để thay đổi hình ảnh khi click vào
-    function changeImage(id, hinh) {
-        var imageElement = document.getElementById('mainImage');
-        imageElement.src = 'layout/img/' + hinh;
-    }
-    var sanphams = document.querySelectorAll('.sanpham');
-    sanphams.forEach(function(sanpham) {
-        sanpham.addEventListener('click', function() {
-            // Lấy id và hình của sản phẩm từ thuộc tính data
-            var id = sanpham.dataset.id;
-            var hinh = sanpham.dataset.hinh;
-            changeImage(id, hinh);
-        });
+// Hàm JavaScript để thay đổi hình ảnh khi click vào
+function changeImage(id, hinh_sp) {
+    var imageElement = document.getElementById('mainImage');
+    imageElement.src = hinh_sp;
+}
+var sanphams = document.querySelectorAll('.sanpham');
+sanphams.forEach(function(sanpham) {
+    sanpham.addEventListener('click', function() {
+        // Lấy id và hình của sản phẩm từ thuộc tính data
+        var id = sanpham.dataset.id;
+        var hinh_sp = sanpham.dataset.hinh_sp;
+        changeImage(id, hinh_sp);
     });
-    var dsspnhoImages = document.querySelectorAll('.dsspnho-image');
+});
+var dsspnhoImages = document.querySelectorAll('.dsspnho-image');
 
-    dsspnhoImages.forEach(function(image) {
-        image.addEventListener('click', function() {
-            var id = image.dataset.id;
-            var hinh = image.dataset.hinh;
-            changeImage(id, hinh);
-        });
+dsspnhoImages.forEach(function(image) {
+    image.addEventListener('click', function() {
+        var id = image.dataset.id;
+        var hinh_sp = image.dataset.hinh_sp;
+        changeImage(id, hinh_sp);
     });
+});
 </script>
 
 <script>
-    var dsspnhoImages = document.querySelectorAll('.dsspnho-image');
+var dsspnhoImages = document.querySelectorAll('.dsspnho-image');
 
-    dsspnhoImages.forEach(function(image) {
-        image.addEventListener('click', function() {
-            var id = image.dataset.id;
-            var hinh = image.dataset.hinh;
-            changeImage(id, hinh);
-            // Loại bỏ lớp 'selected' từ tất cả các hình ảnh khác
-            dsspnhoImages.forEach(function(img) {
-                img.classList.remove('selected');
-            });
-
-            // Thêm lớp 'selected' cho hình ảnh được click
-            image.classList.add('selected');
+dsspnhoImages.forEach(function(image) {
+    image.addEventListener('click', function() {
+        var id = image.dataset.id;
+        var hinh_sp = image.dataset.hinh_sp;
+        changeImage(id, hinh_sp);
+        // Loại bỏ lớp 'selected' từ tất cả các hình ảnh khác
+        dsspnhoImages.forEach(function(img) {
+            img.classList.remove('selected');
         });
+
+        // Thêm lớp 'selected' cho hình ảnh được click
+        image.classList.add('selected');
     });
+});
 </script>
 <style>
-    .highlight {
-        background-color: rgb(33, 158, 211) !important;
-    }
+.highlight {
+    background-color: rgb(33, 158, 211) !important;
+}
 </style>

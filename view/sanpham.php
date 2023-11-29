@@ -1,6 +1,9 @@
 <?php
 $html_dm = showdm($dsdm);
 $html_dssp = showsp($dssp);
+if ($titlepage != "") $title = $titlepage;
+else $title = "SẢN PHẨM"
+/* $html_tendm = tendm($danhmucshow); */
 
 ?>
 <div class="containerfull">
@@ -16,9 +19,10 @@ $html_dssp = showsp($dssp);
 
         </div>
         <div class="boxright">
-            <h2>SẢN PHẨM</h2><br>
+            <h2><?= $title; ?></h2><br>
             <div class="containerfull mr30">
                 <?= $html_dssp; ?>
+
             </div>
         </div>
     </div>

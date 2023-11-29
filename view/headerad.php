@@ -30,7 +30,7 @@
              <a href="admin.php?pg=sanpham">Sản phẩm</a></li>
              <a href="admin.php?pg=user">Tài khoản</a></li>
 
-             <a href="admin.php?pg=">Bình luận</a></li>
+             <a href="admin.php?pg=binhluan">Bình luận</a></li>
              <a href="admin.php?pg=logout">Đăng xuất</a></li>
              <!-- <a href="">ACCESSORIES</a></li>
                 <a href="">COLLECTIBLES</a></li>

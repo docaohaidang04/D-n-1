@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../view/lichsu.css">
+<link rel="stylesheet" href="../view/css/lichsu.css">
 <div class="lichsu">
     <div class="ls">
         <p>LỊCH SỬ MUA HÀNG</p>

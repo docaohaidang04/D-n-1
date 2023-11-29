@@ -6,21 +6,21 @@ $stt = 0;
 foreach ($showsp as $value) {
     extract($value);
     $tt = '';
-    if ($bestseller == 1) {
-        $tt = 'Bán chạy';
-    } else {
-        $tt = 'Bình thường';
-    }
+    // if ($bestseller == 1) {
+    //     $tt = 'Bán chạy';
+    // } else {
+    //     $tt = 'Bình thường';
+    // }
 
     $stt++;
     $kq .= ' <tr>
         <td>' . $stt . '</td>
-        <td>' . $ten . '</td>
-        <td><img src="layout/img/' . $hinh . '"width=100px></td>
+        <td>' . $ten_sp . '</td>
+        <td><img src="' . $hinh_sp . '"width=100px></td>
         <td>' . $gia . '</td>
         <td>' . $tt . '</td>
         <td>' . $tendm . '</td>
-        <td><a href="admin.php?pg=udsp&id=' . $id . '"><i class="fas fa-edit" style="color: #ff2600;"></i></a> <a href="admin.php?pg=spxoa&id=' . $id . '& hinh=' . $hinh . '"><i class="fas fa-trash-alt" style="color: #fa3605;"></i></a></td>
+        <td><a href="admin.php?pg=udsp&id=' . $id . '"><i class="fas fa-edit" style="color: #ff2600;"></i></a> <a href="admin.php?pg=spxoa&id=' . $id . '& hinh_sp=' . $hinh_sp . '"><i class="fas fa-trash-alt" style="color: #fa3605;"></i></a></td>
     </tr>';
 }
 
@@ -39,12 +39,14 @@ if ((isset($_GET['id'])) && ($_GET['id'] > 0)) {
     <div class="form-loai">
 
         <form action="admin.php?pg=capnhatsp" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-            <label for="">Tên sản phẩm:</label> <input type="text" name="ten" value="<?= $ten; ?>" id="ten"><br>
+            <label for="">Tên sản phẩm:</label> <input type="text" name="ten_sp" value="<?= $ten_sp; ?>" id="ten"><br>
             <div id="errTen"></div>
-            <label for="">Hình ảnh:</label> <input type="file" name="hinh" value="" id="hinh"><img src="<?= $hinh; ?>" name="hinh" alt="" width="100px"><br>
+            <label for="">Hình ảnh:</label> <input type="file" name="hinh_sp" value="" id="hinh"><img src="<?= $hinh_sp; ?>" name="hinh_sp" alt="" width="100px"><br>
             <div id="errHinh"></div>
             <label for="">Giá:</label> <input type="text" name="gia" value="<?= $gia; ?>" id="gia"><br>
             <div id="errGia"></div>
+            <label for="">Mô tả:</label> <input type="text" name="mota" value="<?= $mota; ?>" id="gia"><br>
+           
             <!-- <label for="">Giảm:</label> <input type="text" name="giam" value=""><br> -->
             <label for="">Trạng thái:</label>
             <input type="radio" name="bestseller" value="0" id="bestseller">0. Bình thường<br>
@@ -57,7 +59,7 @@ if ((isset($_GET['id'])) && ($_GET['id'] > 0)) {
             <div id="errDanhmuc"></div>
 
             <br>
-            <input type="hidden" name="hinh" value="<?= $hinh ?>"><br>
+            <input type="hidden" name="hinh_sp" value="<?= $hinh_sp ?>"><br>
             <input type="hidden" value="<?= $id ?>" name="id">
             <input type="submit" name="capnhat" value="Sửa" class="btn">
         </form>

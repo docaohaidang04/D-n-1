@@ -14,11 +14,18 @@ function user_insert($ten, $username, $password, $phone)
     //Sử dụng tham số là một phần quan trọng trong việc ngăn chặn SQL injection và bảo vệ cơ sở dữ liệu khỏi các cuộc tấn công này.
     pdo_execute($sql, $ten, $username, $password, $phone);
 }
-//dang nhap
-function checkuser($username, $password)
+
+
+function user_insert_id($ten, $diachi, $phone, $email)
 {
-    $sql = "SELECT * FROM user WHERE username=? AND password=?";
-    return pdo_query_one($sql, $username, $password);
+    $sql = "INSERT INTO user (ten,diachi, phone,email) VALUES ( ?,?,?,?)";
+    return pdo_execute_id($sql, $ten, $diachi, $phone, $email);
+}
+//dang nhap
+function checkuser($phone, $password)
+{
+    $sql = "SELECT * FROM user WHERE phone=? AND password=?";
+    return pdo_query_one($sql, $phone, $password);
     /* if (is_array($kq) && (count($kq))) {
         return $kq["id_us"];
     } else {
@@ -66,10 +73,10 @@ function showus()
 
 
 
-function udmyacc($ten, $username, $phone, $email, $password, $vaitro, $id_us)
+function udmyacc($ten, $username, $phone, $email, $password, $vaitro, $hinh, $id_us)
 {
-    $sql = "UPDATE user SET ten=?, username=?,phone=?,email=?,password=?, vaitro=? WHERE id_us=?";
-    pdo_execute($sql, $ten, $username, $phone, $email, $password, $vaitro, $id_us);
+    $sql = "UPDATE user SET ten=?, username=?,phone=?,email=?,password=?, vaitro=?,hinh=? WHERE id_us=?";
+    pdo_execute($sql, $ten, $username, $phone, $email, $password, $vaitro, $hinh, $id_us);
 }
 
 // function khach_hang_select_by_id($ma_kh){

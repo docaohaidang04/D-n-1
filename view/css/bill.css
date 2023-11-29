@@ -44,24 +44,28 @@ form{
      flex-direction: column;
      background: #FFF;
      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+     margin: auto;
+     
 }
-form {
-     display: flex;
-     flex-direction: column;
-     /* max-width: 300px;  */
-     /* Điều chỉnh độ rộng tối đa của form nếu cần */
-     margin: auto; /* Để canh giữa form */
-     width: 770px;
-     height: 407px;
- }
- 
- form div{
+
+.thongtin_left{
+     background: #FFF;
+     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+     margin-top: 39px;
+     margin-left: 20px;
+     padding-top: 5px;
+     /* height: 800px; */
+
+}
+
+form div{
      margin-bottom: 10px; /* Khoảng cách giữa các div chứa label và input */
      margin-left: 10px;
      display: flex;
      flex-direction: column;
  }
  
+
  label {
      margin-bottom: 5px; /* Khoảng cách giữa label và input */
  }
@@ -79,7 +83,7 @@ form {
      margin-top: 39px;
      margin-left: 20px;
      padding-top: 5px;
-     height: 400px;
+     height: auto;
 }
 .thongtin_sp{
      display: flex;

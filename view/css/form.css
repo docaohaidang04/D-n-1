@@ -44,10 +44,10 @@
 
 .form_lo input{
     width: 350px;
-    height: 25px;
+    height: 30px;
     flex-shrink: 0;
-
     border: 1px solid #000;
+    border-radius: 3px;
     background: #FFF;
 }
 .form_full{
@@ -91,6 +91,12 @@
 /* .fo1{
     margin-top: 15px;
 } */
+.fo1{
+    padding-bottom: 20px;
+}
+.fo1 label{
+    margin-bottom: 5px;
+}
 
 .form_sm input:hover{
     background-color: #FFF;
@@ -109,4 +115,28 @@
     text-decoration: none;
 
     color: red;
+}
+
+
+.form_lo .form_full
+#errPass,
+#errPhone
+{
+    color: red;
+}
+
+.password-field {
+    position: relative;
+}
+  
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-image: url('layout/img/eye-icon.png'); /* Đường dẫn tới biểu tượng mắt */
+    background-size: cover;
 }

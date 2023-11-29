@@ -18,6 +18,13 @@ function danhmuc_insert($ten, $ma)
  * @throws PDOException lỗi cập nhật
  */
 
+function get_name_dm($id)
+{
+    $sql = "SELECT ten FROM danhmuc WHERE id=" . $id;
+    $kq = pdo_query_one($sql);
+    return $kq["ten"];
+}
+
 function getdm($id)
 {
     $sql = "SELECT * FROM danhmuc WHERE id=?";

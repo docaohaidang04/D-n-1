@@ -1,9 +1,12 @@
 <?php
 $dsdm = danhmuc_select_all();
-$html_dssp_new = showsp($dssp_new);
-
-$html_dssp_best = showsp($dssp_best);
-
+/* $html_dssp_new = showsp($dssp_new); */
+$html_dssp_noibat = showsp($dssp_noibat);
+$html_dssp_giamgia = showsp($dssp_giamgia);
+$html_dssp_nhieuluotmua = showspbc($dssp_nhieuluotmua);
+/* $html_dssp_ao = showsp($dssp_ao);
+$html_dssp_quan = showsp($dssp_quan);
+$html_dssp_aokhoac = showsp($dssp_aokhoac); */
 $html_dm = showdm($dsdm);
 ?>
 
@@ -25,16 +28,27 @@ $html_dm = showdm($dsdm);
 
         <h1>SẢN PHẨM NỔI BẬT</h1><br><br>
         <div class="containerfull">
-            <?= $html_dssp_best; ?>
+            <?= $html_dssp_noibat; ?>
         </div>
 
         <div class="containerfull mr30">
-            <h3 style="text-align: center; font-size:30px">ÁO</h3>
-            <?= $html_dssp_new; ?>
+            <h3 style="text-align: center; font-size:30px">SẢN PHẨM ĐANG GIẢM GIÁ</h3>
+            <?= $html_dssp_giamgia; ?>
         </div>
 
         <div class="containerfull mr30">
-            <h3 style="text-align: center; font-size:25px">QUẦN</h3>
+            <h3 style="text-align: center; font-size:25px">SẢN PHẨM BÁN CHẠY</h3>
+            <?= $html_dssp_nhieuluotmua; ?>
+        </div>
+        <img width="100%" height="auto" src="layout/img/banner2.jpg" alt="">
+        <div class="containerfull mr30">
+            <!--  <h3 style="text-align: center; font-size:25px">QUẦN</h3> -->
+
+        </div>
+
+        <div class="containerfull mr30">
+            <!-- <h3 style="text-align: center; font-size:25px">ÁO KHOÁC</h3> -->
+
         </div>
 
 

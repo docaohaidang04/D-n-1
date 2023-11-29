@@ -6,31 +6,33 @@
         extract($userinfo);
     }
 ?>
-<link rel="stylesheet" href="view/css/form.css">
+<link rel="stylesheet" href="view/css/style.css">
 <br>
-<div class="form_lo">
-    <p class="dk">THÔNG TIN TÀI KHOẢN ĐÃ ĐƯỢC CẬP NHẬT</p>
-    <div class="form_full">
+<div class="form_tt">
+    <p class="dk">THÔNG TIN TÀI KHOẢN CẬP NHẬT THÀNH CÔNG</p>
+    <div class="form_tt">
+    <div>
+            <img src="<?=$hinh?>" width="100px" height="100px">
+            
+        </div>
         <div>
-            <label for="">Họ tên</label>
-            <?=$ten?>
+            <label for="">Họ tên: <?=$ten?></label>
+            
         </div>
-        <div class="fo1">
-            <label for="">Tên đăng nhập</label>
-            <?=$username?>
+        <div class="fott1">
+            <label for="">Tên đăng nhập:  <?=$username?></label>
+           
         </div>
-        <div class="fo1">
-            <label for="">Số điện thoại</label>
-            <?=$phone?>
+        <div class="fott1">
+            <label for="">Số điện thoại:  <?=$phone?></label>
+           
         </div>
-        <div class="fo1">
-            <label for="">Email</label>
-            <?=$email?>
+        <div class="fott1">
+            <label for="">Email:  <?=$email?></label>
+           
         </div>
-        <div class="fo1">
-            <label for="">Mật khẩu</label>
-            <?=$password?>
-        </div> 
+
+       
     </div>
 
 </div>
