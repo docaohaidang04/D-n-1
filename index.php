@@ -277,6 +277,14 @@ if (!isset($_GET['pg'])) {
 
             include "view/bill_ct.php";
             break;
+            
+        case 'forgot':
+            include 'view/forgot_password.php';
+            break;
+        
+        case 'reset':
+            include 'view/reset_password.php';
+            break;
         default:
 
             include "view/home.php";

@@ -44,11 +44,11 @@ $dssp = show_sp();
             <p class="gia"><?= number_format($gia, 0, ",") ?>đ</p>
             <!-- HTML -->
             <p class="kichco">Kích cỡ</p>
-            <button class="bt" onclick="highlightButton(this, 'S')">S</button>
-            <button class="bt" onclick="highlightButton(this, 'M')">M</button>
-            <button class="bt" onclick="highlightButton(this, 'L')">L</button>
-            <button class="bt" onclick="highlightButton(this, 'XL')">XL</button>
-            <button class="bt" onclick="highlightButton(this, 'XXL')">XXL</button>
+            <button class="bt" onclick="highlightButton(this, 'S')" id="sizeS">S</button>
+            <button class="bt" onclick="highlightButton(this, 'M')" id="sizeM">M</button>
+            <button class="bt" onclick="highlightButton(this, 'L')" id="sizeL">L</button>
+            <button class="bt" onclick="highlightButton(this, 'XL')" id="sizeXL">XL</button>
+            <button class="bt" onclick="highlightButton(this, 'XXL')" id="sizeXXL">XXL</button>
 
 
             <div class="sl">
@@ -57,8 +57,8 @@ $dssp = show_sp();
                     <!-- <button id="giamSoLuong">-</button>
                     <span id="soLuongSanPham">1</span>
                     <button id="tangSoLuong">+</button> -->
-                    <input type="number" name="soluongInput" id="soluongInput" min="1" max="10" value="<?= $sl ?>"
-                        data-index="<?= $index ?>">
+                    <input type="number" name="soluongInput" id="soluongInput<?= $index ?>" min="1" max="10"
+                        value="<?= $sl ?>" data-index="<?= $index ?>">
 
                 </div>
             </div>
@@ -66,11 +66,14 @@ $dssp = show_sp();
 
             <?php
             $kq = "";
+            $selectedSize = isset($_POST['size']) ? $_POST['size'] : 'N/A';
+           
             $kq .= '<form action="index.php?pg=muangay" method="post"> 
                 <input type="hidden" name="hinh_sp" value="' . $hinh_sp . '">
                 <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
                 <input type="hidden" name="gia" value="' . $gia . '">
                 <input type="hidden" name="idpro" value="' . $id . '">
+                 <input type="hidden" name="size" value="' . $selectedSize . '">
                   <td id="soLuongTd"><?= $sl ?></td>
             <button type="submit" class="muangay" name="dathang">MUA NGAY</button>
             </form>';
@@ -79,11 +82,14 @@ $dssp = show_sp();
 
             <?php
             $kq = "";
+            $selectedSize = isset($_POST['size']) ? $_POST['size'] : 'N/A';
+              
             $kq .= '<form action="index.php?pg=giohang" method="post"> 
                 <input type="hidden" name="hinh_sp" value="' . $hinh_sp . '">
                 <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
                 <input type="hidden" name="gia" value="' . $gia . '">
                 <input type="hidden" name="idpro" value="' . $id . '">
+                 <input type="hidden" name="size" value="' . $selectedSize . '">
 
 
             <button type="submit" class="themgh" name="dathang">THÊM GIỎ HÀNG</button>
@@ -96,28 +102,6 @@ $dssp = show_sp();
     <div class="ctsp_mota">
         <h2>MÔ TẢ SẢN PHẨM</h2>
         <p>
-            <!-- ÁO THUN NAM - RISE - RETRO DENIM - FREEDOM
-            Sản phẩm được lấy cảm hứng từ những năm thập niên 90 và được biến tấu lại theo phong cách trẻ trung và hiện
-            đại của giới trẻ hiện nay. Đây chính là một sự kết hợp hoàn hảo của hơi thở cổ điển với xu thế hiện đại tạo
-            nên một sản phẩm trendy.
-            - Chất liệu 100% cotton nhập khẩu cao cấp 
-            - Form Oversize thời thượng cùng kiểu chữ in trend nổi bật 
-            - Điểm nhấn của chiếc áo chính là hiệu ứng in dập nổi vô cùng đặc biệt 
-            - Đường may tỉ mỉ, chi tiết là yếu tố quan trọng để đảm bảo sản phẩm được ra mắt với phiên bản hoàn hảo và
-            chất lượng nhất. 
-            Thông số sản phẩm: 
-            - Chất liệu: Cotton 
-            - Size: 
-            + L: 1m61 - 1m70 - 56kg - 65kg 
-            + XL: 1m71 - 1m75, 66kg - 75kg 
-            + 2XL: trên 1m75, 76kg - 85kg 
-            - Màu sắc: Trắng - Đen - Kem 
-            - Thương hiệu: RISESHOP 
-            Chính sách sản phẩm: 
-            - Hỗ trợ đổi trả sản phẩm trong 30 ngày 
-            - Bảo hành lên đến 90 ngày. 
-            - Được kiểm tra hàng trước khi thanh toán (đối với đơn online) 
-            - Xuất xứ: Việt Nam  -->
             <?= $mota ?>
 
         </p>
@@ -158,27 +142,59 @@ $dssp = show_sp();
 
     <div class="ctsp_danhgia" id="binhluan">
         <!-- <h2>ĐÁNH GIÁ</h2> -->
-
-
-
-
     </div>
 
 
     <h1 style="text-align: center;font-family:Arial, Helvetica, sans-serif">SẢN PHẨM LIÊN QUAN</h1>
     <div class="containerfull mr10">
         <div class="splq"><?= $html_dssp_lienquan ?></div>
-
-        <!-- <div class="box25 mr15">
-                    <div class="best">
-
-                    </div>
-                </div> -->
     </div>
 
 
 
 </div>
+
+
+<script>
+var lastClickedButton = null;
+
+function highlightButton(button, size) {
+    console.log('Button clicked');
+
+    // Loại bỏ lớp 'highlight' khỏi nút cuối cùng đã được nhấp
+    if (lastClickedButton !== null) {
+        lastClickedButton.classList.remove('highlight');
+    }
+
+    // Thêm lớp 'highlight' cho nút mới được nhấp
+    button.classList.add('highlight');
+
+    // Cập nhật nút cuối cùng được nhấp
+    lastClickedButton = button;
+
+    // Gửi dữ liệu đã chọn lên server sử dụng Ajax
+    $.ajax({
+        type: "GET",
+        url: "process.php",
+        data: {
+            size: size
+        },
+        success: function(response) {
+            // Xử lý phản hồi từ server nếu cần
+            console.log(response);
+        },
+        error: function(error) {
+            // Xử lý lỗi nếu có
+            console.log(error);
+        }
+    });
+
+    // Thực hiện các hành động bổ sung nếu cần dựa trên kích cỡ đã chọn (tùy chọn)
+    console.log('Kích cỡ đã chọn:', size);
+}
+</script>
+
+
 <script>
 const soLuongSanPhamElement = document.getElementById("soLuongSanPham");
 const tangSoLuongButton = document.getElementById("tangSoLuong");
@@ -220,24 +236,6 @@ giamSoLuongButton.addEventListener("click", function() {
  } */
 
 // button
-
-var lastClickedButton = null;
-
-function highlightButton(clickedButton, size) {
-    // Loại bỏ lớp 'highlight' khỏi nút cuối cùng đã được nhấp
-    if (lastClickedButton !== null) {
-        lastClickedButton.classList.remove('highlight');
-    }
-
-    // Thêm lớp 'highlight' cho nút mới được nhấp
-    clickedButton.classList.add('highlight');
-
-    // Cập nhật nút cuối cùng được nhấp
-    lastClickedButton = clickedButton;
-
-    // Thực hiện các hành động bổ sung nếu cần dựa trên kích cỡ đã chọn (tùy chọn)
-    console.log('Kích cỡ đã chọn:', size);
-}
 </script>
 
 <script>
@@ -266,24 +264,7 @@ dsspnhoImages.forEach(function(image) {
 });
 </script>
 
-<script>
-var dsspnhoImages = document.querySelectorAll('.dsspnho-image');
 
-dsspnhoImages.forEach(function(image) {
-    image.addEventListener('click', function() {
-        var id = image.dataset.id;
-        var hinh_sp = image.dataset.hinh_sp;
-        changeImage(id, hinh_sp);
-        // Loại bỏ lớp 'selected' từ tất cả các hình ảnh khác
-        dsspnhoImages.forEach(function(img) {
-            img.classList.remove('selected');
-        });
-
-        // Thêm lớp 'selected' cho hình ảnh được click
-        image.classList.add('selected');
-    });
-});
-</script>
 <style>
 .highlight {
     background-color: rgb(33, 158, 211) !important;

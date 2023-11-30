@@ -30,6 +30,7 @@
                 <div class="dnn">
                     <a href="index.php?pg=dangky">Bạn đã có tài khoản? Đăng ký ngay</a>
                 </div>
+                <a style="color: black; font-size: 15px; padding-left:250px; " href="index.php?pg=forgot">Forgot password!</a>
             </div>
         </div>
     </form>
