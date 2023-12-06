@@ -1,0 +1,88 @@
+/* Thiết lập các thuộc tính cho phần gioithieu */
+.gioithieu {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gioithieu h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333; /* Màu văn bản */
+  }
+  
+  .gioithieu p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555; /* Màu văn bản */
+
+    max-width: 1084px;
+        width: 100%;
+        margin-bottom: 0;
+  }
+  
+  .gioithieu button {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(244, 87, 66); /* Màu nút */
+    color: white; /* Màu văn bản trên nút */
+    cursor: pointer;
+
+    border-radius: 50px;
+  }
+  
+  .gioithieu button:hover {
+    background-color: rgb(244, 87, 66); /* Màu khi di chuột qua nút */
+  }
+  
+  /* Thiết lập các thuộc tính cho hai phần gt_left và gt_right */
+  .gt_left,
+  .gt_right {
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
+  }
+  
+  .gt_left h4,
+  .gt_right h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333; /* Màu văn bản */
+  }
+  .gioithieu_left{
+    display: flex;
+    margin-top: 25px;
+  }
+  .gioithieu_left .gt_left, 
+  .gioithieu_left .gt_right{
+    max-width: 621px;
+    margin: 0 15px 0;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 2px 4px 1px rgba(0,0,0,.25);
+    border-radius: 8px;
+    padding: 25px;
+  } 
+
+
+  .bt_gt{
+    background: #ee4d2d;
+    margin-top: 48px;
+    height: 48px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    font-family: Open Sans;
+    text-transform: capitalize;
+    
+    }
+
+    
+  
+  

@@ -1,0 +1,47 @@
+
+/* Style the form container */
+.lienhe {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Style the form elements */
+.input label {
+    font-weight: bold;
+}
+
+.input input[type="text"],
+.input input[type="email"],
+.input textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.input input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.tdlienhe{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
