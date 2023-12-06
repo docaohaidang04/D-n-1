@@ -35,14 +35,42 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get all elements with the class "confirmationLink"
     var confirmationLinks = document.querySelectorAll('[id^="confirmationLink_"]');
 
-    // Add a click event listener to each link
+    // Function to handle the click event
+    function handleConfirmationClick(link) {
+        var id = link.id.split('_')[1]; // Extract the bill ID from the link ID
+        var confirmationLinkId = 'confirmationLink_' + id;
+        var confirmationStatus = localStorage.getItem(confirmationLinkId);
+
+        if (!confirmationStatus || confirmationStatus !== 'confirmed') {
+            // If not confirmed, update the text content and set status to 'confirmed'
+            link.textContent = 'Đã xác nhận';
+            localStorage.setItem(confirmationLinkId, 'confirmed');
+        }
+    }
+
+    // Loop through all confirmation links and add click event listeners
     confirmationLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent the default behavior (navigating to the href)
-            link.textContent =
-                'Đã xác nhận'; // Change the text content to "Đã xác nhận"
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            handleConfirmationClick(link);
         });
     });
+
+    // Function to update links on page load based on stored confirmation status
+    function updateLinksOnLoad() {
+        confirmationLinks.forEach(function(link) {
+            var id = link.id.split('_')[1];
+            var confirmationLinkId = 'confirmationLink_' + id;
+            var confirmationStatus = localStorage.getItem(confirmationLinkId);
+
+            if (confirmationStatus === 'confirmed') {
+                link.textContent = 'Đã xác nhận';
+            }
+        });
+    }
+
+    // Call the function to update links on page load
+    updateLinksOnLoad();
 });
 </script>
 <div class="cart">
@@ -70,17 +98,3 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the link element
-        var confirmationLink = document.getElementById('confirmationLink');
-
-        // Add a click event listener
-        confirmationLink.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent the default behavior (navigating to the href)
-
-            // Change the text content to "Đã xác nhận"
-            confirmationLink.textContent = 'Đã xác nhận';
-        });
-    });
-</script> -->
