@@ -423,6 +423,14 @@ $productExists = false;
 
             include 'view/chitietlichsu.php';
             break;
+
+        case 'lienhe':
+            include 'view/lienhe.php';
+            break;
+        case 'gioithieu':
+            include 'view/gioithieu.php';
+            break;
+        
         default:
 
             include "view/home.php";
