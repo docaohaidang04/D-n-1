@@ -13,7 +13,7 @@ foreach ($showls as $value) {
         <td>#RS' . $idbill . '</td>
         <td>' . $ten . '</td>
       
-        <td><img src="' . $hinh . '" width=100></td>
+        <td><img src="../' . $hinh . '" width=100></td>
         <td>' . $gia . '</td>
         <td>' . $size . '</td>
         <td>' . $sl . '</td>
