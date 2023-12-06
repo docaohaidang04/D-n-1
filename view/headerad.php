@@ -31,6 +31,8 @@
              <a href="admin.php?pg=user">Tài khoản</a></li>
 
              <a href="admin.php?pg=binhluan">Bình luận</a></li>
+             <a href="admin.php?pg=thongke">Thống kê</a></li>
+
              <a href="admin.php?pg=logout">Đăng xuất</a></li>
              <!-- <a href="">ACCESSORIES</a></li>
                 <a href="">COLLECTIBLES</a></li>
