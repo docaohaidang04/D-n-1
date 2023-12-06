@@ -6,37 +6,33 @@
 
 <?php
  
-$email = $_GET["email"];
-$reset_token = $_GET["reset_token"];
+ $email = $_GET["email"];
+ $reset_token = $_GET["reset_token"];
+  
+ $connection = mysqli_connect("localhost", "root", "", "dataduan1");
  
-$connection = mysqli_connect("localhost", "root", "", "dataduan1");
+ if (!$connection) {
+     die("Lỗi kết nối: " . mysqli_connect_error());
+ }
  
-$sql = "SELECT * FROM user WHERE email = '$email'";
-$result = mysqli_query($connection, $sql);
-if (mysqli_num_rows($result) > 0)
-{
-    //
-}
-else
-{
-    echo "Email does not exists";
-}
-
-$user = mysqli_fetch_object($result);
-if ($user->reset_token == $reset_token)
-{
-    //
-}
-else
-{
-    echo "Recovery email has been expired";
-}
-
-if ($user->reset_token == $reset_token)
-{
-    ?>
-    <div class="form_lo">
-                    <p class="dk">ĐỔI MẬT KHẨU</p>
+ $sql = "SELECT * FROM user WHERE email = '$email'";
+ $result = mysqli_query($connection, $sql);
+ 
+ if (!$result || mysqli_num_rows($result) === 0) {
+     echo '<link rel="stylesheet" href="../view/css/tb.css">
+         <div class="centered-content">
+             <div class="notification">
+                 <h2>Email không tồn tại</h2>
+                 <p>Xin vui lòng kiểm tra lại địa chỉ email hoặc đăng ký tài khoản mới.</p>
+                 <a class="loiform" href="../index.php?pg=forgot">Quay lại</a>
+             </div>
+         </div>';
+    } else {
+     $user = mysqli_fetch_object($result);
+     if ($user && $user->reset_token == $reset_token) {
+         ?>
+         <div class="form_lo">
+            <p class="dk">ĐỔI MẬT KHẨU</p>
                     <form method="post" action="dao/new_password.php">
                         <div class="form_full">
                         <input type="hidden" name="email" value="<?php echo $email; ?>">
@@ -46,19 +42,29 @@ if ($user->reset_token == $reset_token)
                                 <input type="password" name="new_password" placeholder="Nhập mật khẩu mới">
                                 <div id="erremail"></div>
                             </div>
-                            <!-- <div>
+                            <div>
                                 <label for="password_confirmation">Nhập lại mật khẩu mới</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu mới">
-                            </div> -->
+                                <input type="password" id="password_confirmation" name="new_password" placeholder="Nhập lại mật khẩu mới">
+                            </div>
                             <div class="form_sm">
                                 <input type="submit" name="" value="LƯU">
                             </div>
                         </div>
                     </form>
                 </div>
-    <?php
-}
-else
-{
-    echo "Recovery email has been expired";
-}
+         </div>
+         <?php
+     } else {
+         echo '<link rel="stylesheet" href="../view/css/tb.css">
+             <div class="centered-content">
+                 <div class="error-message">
+                     <p>Không thể gửi tin nhắn. Lỗi Mailer: <span class="error-info"></span></p>
+                     <a class="trangchu" href="../index.php?pg=forgot">Quay lại</a>
+                 </div>
+             </div>';
+     }
+ }
+ 
+ mysqli_close($connection);
+ 
+    

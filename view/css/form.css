@@ -94,7 +94,7 @@
     margin-top: 15px;
 } */
 .fo1{
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
 .fo1 label{
     margin-bottom: 5px;
@@ -130,15 +130,27 @@
 .password-field {
     position: relative;
 }
-  
-.toggle-password {
+
+.eye {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 35px;
+    top: 36%;
     transform: translateY(-50%);
     cursor: pointer;
     width: 20px;
     height: 20px;
-    background-image: url('layout/img/eye-icon.png'); /* Đường dẫn tới biểu tượng mắt */
+    /* background-image: url('layout/img/eye-icon.png');  */
     background-size: cover;
+}
+.hidden{
+    display: none;
+}
+.eye-open {
+  display: none;
+}
+.eye-open.is-active {
+  display: block;
+}
+.eye-open.is-active + .eye-close {
+  display: none;
 }

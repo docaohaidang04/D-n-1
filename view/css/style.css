@@ -152,7 +152,7 @@ h2 {
 
 .icon{
    display: flex;
-   padding-left: 300px;
+   padding-left: 170px;
    padding-top: 30px;
 }
 .icon a{
@@ -167,7 +167,7 @@ h2 {
 
 /* TÌM KIẾM */
 .timkiem{
-   width: 100px;
+   /* width: 100px; */
    display: flex;
    justify-content: center;
    align-items: center;
@@ -812,14 +812,14 @@ form .submit:hover{
    display: none;
    position: absolute;
    background-color: #f9f9f9;
-   min-width: 160px;
+   min-width: 110px;
    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
    z-index: 1;
 }
 
 .dropdown-content a {
 
-   padding: 12px 16px;
+   padding: 12px 10px;
    text-decoration: none;
    display: block;
 }
@@ -861,3 +861,34 @@ form .submit:hover{
    margin-top: 10px;
 }
 
+.dropdown-content .icon_logout{
+      display: flex;
+
+}
+.dropdown-content .icon_logout img{
+   margin-left: 5px;
+   margin-right: 0px;
+   margin-top: 7px;
+   width: 20%;
+   height: 20%;
+   color: rgb(238, 63, 92);
+}
+.dropdown-content .icon_logout a{
+   margin-left: 0;
+}
+.dropdown-content div:hover{
+   background-color: #f1f1f1;
+}
+
+.icon_login{
+   width: 110px;
+   display: flex;
+}
+
+.icon_login img{
+   width: 20%;
+   height: 20%;
+   color: rgb(238, 63, 92);
+   margin-left: 5px;
+   margin-top: 18px;
+}

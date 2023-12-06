@@ -14,6 +14,11 @@ function user_insert($ten, $username, $password, $phone)
     //Sử dụng tham số là một phần quan trọng trong việc ngăn chặn SQL injection và bảo vệ cơ sở dữ liệu khỏi các cuộc tấn công này.
     pdo_execute($sql, $ten, $username, $password, $phone);
 }
+function check_taikhoan($username)
+{
+    $sql = "SELECT * FROM user WHERE username=? ";
+    return pdo_query_one($sql, $username);
+}
 
 
 function user_insert_id($ten, $diachi, $phone, $email)

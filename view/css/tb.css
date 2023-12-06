@@ -1,0 +1,99 @@
+
+
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thankyou{
+    font-weight: bold;
+}
+.centered-content img{
+    padding-top: 100px;
+}
+.trangchu {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.trangchu:hover {
+    background-color: #0056b3;
+}
+
+
+/* Email không tồn tại  */
+.notification {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.notification h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.notification p {
+    margin-bottom: 0;
+}
+
+/* Không gửi được tin nhắn */
+.error-message {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    color: #a94442;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.error-message p {
+    margin-bottom: 0;
+}
+
+.error-message .error-info {
+    font-weight: bold;
+}
+
+/* Email đã hết hạn */
+.expired-message {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.expired-message p {
+    margin-bottom: 0;
+}
+
+
+/* Nút quay lại */
+.loiform {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.loiform:hover {
+    background-color: #0056b3;
+}
+

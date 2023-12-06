@@ -149,6 +149,7 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
                         <div class="thongtin_sp_2">
                             <p>Số lượng:</p>
                             <p><?= $sl ?></p>
+                            <p>Kích cỡ: <?= $size ?></p>
                         </div>
                     </div>
                 </div>
@@ -165,8 +166,12 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
             </div>
 
 
+            <form action="add_to_history.php" method="POST">
+                <!-- Các input của form (tên, điện thoại, địa chỉ, ...) -->
+                <!-- ... -->
+                <button class="thongtin_sp_2_datdon" name="thanhtoan" type="submit">ĐẶT ĐƠN</button>
+            </form>
 
-            <button class="thongtin_sp_2_datdon" name="thanhtoan" type="submit">ĐẶT ĐƠN</button>
         </div>
     </div>
 

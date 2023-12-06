@@ -13,7 +13,7 @@ foreach ($showb as $value) {
         <td>đang xử lý</td>
         <td>' . $total . '</td>
         <td>' . $ngaydat . '</td>
-        <td><a href="admin.php?pg=udsp&id=' . $id . '"><i class="fas fa-edit" style="color: #ff2600;"></i></td>
+        <td><a href="admin.php?pg=chitietlichsu&id=' . $id . '"><i class="fas fa-eye" style="color: #ff0000;"></i></a></td>
     </tr>';
 }
 
@@ -34,9 +34,22 @@ foreach ($showb as $value) {
             <th>Trạng thái</th>
             <th>Tổng tiền</th>
             <th>Ngày đặt</th>
-            <th>Chức năng</th>
+            <th>Chi tiết đơn hàng</th>
         </tr>
 
         <?php echo $kq; ?>
     </table>
 </div>
+
+<style>
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    margin: 0 auto;
+    width: 90%;
+}
+</style>

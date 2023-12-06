@@ -6,7 +6,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>RISE</title>
-     <link rel="stylesheet" href="view/css/admin.css">
+     <link rel="stylesheet" href="../view/css/admin.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
  </head>
 
@@ -21,7 +21,7 @@
 
 
      <div class="menuad" style=" background-color: #0f111d; margin:0px;">
-         <img src="layout/img/logo1.jpg" alt="" style="width: 150px;">
+         <img src="../layout/img/logo1.jpg" alt="" style="width: 150px;">
 
 
          <nav>

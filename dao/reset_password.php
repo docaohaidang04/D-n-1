@@ -5,7 +5,7 @@ $reset_token = $_GET["reset_token"];
  
 $connection = mysqli_connect("localhost", "root", "", "dataduan1");
  
-$sql = "SELECT * FROM users WHERE email = '$email'";
+$sql = "SELECT * FROM user WHERE email = '$email'";
 $result = mysqli_query($connection, $sql);
 if (mysqli_num_rows($result) > 0)
 {
@@ -13,7 +13,11 @@ if (mysqli_num_rows($result) > 0)
 }
 else
 {
-    echo "Email does not exists";
+    echo '<div class="notification">
+            <h2>Email không tồn tại</h2>
+            <p>Xin vui lòng kiểm tra lại địa chỉ email hoặc đăng ký tài khoản mới.</p>
+            <a class="loiform" href="../index.php?pg=forgot">Quay lại</a>
+        </div>';
 }
 $user = mysqli_fetch_object($result);
 if ($user->reset_token == $reset_token)
@@ -22,7 +26,11 @@ if ($user->reset_token == $reset_token)
 }
 else
 {
-    echo "Recovery email has been expired";
+    echo '<link rel="stylesheet" href="../view/css/tb.css">
+        <div class="expired-message">
+            <p>Email khôi phục đã hết hạn.</p>
+            <a class="loiform" href="../index.php?pg=forgot">Quay lại</a>
+        </div>';
 }
 if ($user->reset_token == $reset_token)
 {
@@ -38,5 +46,9 @@ if ($user->reset_token == $reset_token)
 }
 else
 {
-    echo "Recovery email has been expired";
+    echo '<link rel="stylesheet" href="../view/css/tb.css">
+        <div class="expired-message">
+            <p>Email khôi phục đã hết hạn.</p>
+            <a class="loiform" href="../index.php?pg=forgot">Quay lại</a>
+        </div>';
 }

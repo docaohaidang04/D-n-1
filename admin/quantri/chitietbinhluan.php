@@ -25,7 +25,7 @@ if (isset($showctbl) && (is_array($showctbl) || is_object($showctbl))) {
 </br>
 <div style="margin-left:20px">
 <a href="admin.php?pg=exit"><i class="fas fa-sign-out-alt fa-rotate-180" style="color: #ff1900;"></i> Quay lại</a>
-</div>
+</div class="content">
     <table border="1">
         <tr>
             <th>STT</th>
@@ -38,5 +38,16 @@ if (isset($showctbl) && (is_array($showctbl) || is_object($showctbl))) {
         </tr>
         <?php echo $kq; ?>
     </table>
+    <style>
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    table{
+        margin: 0 auto;
+        width:100%;
+    }
+</style>
 </body>
 </html>

@@ -24,7 +24,11 @@ function get_name_dm($id)
     $kq = pdo_query_one($sql);
     return $kq["ten"];
 }
-
+function check_ten($ten)
+{
+    $sql = "SELECT * FROM danhmuc WHERE ten=?";
+    return pdo_query_one($sql, $ten);
+}
 function getdm($id)
 {
     $sql = "SELECT * FROM danhmuc WHERE id=?";

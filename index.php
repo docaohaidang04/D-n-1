@@ -7,6 +7,7 @@ include 'view/header.php';
 include 'dao/danhmuc.php';
 include 'dao/user.php';
 include 'dao/donhang.php';
+include 'dao/bill.php';
 
 //data cho trang chu
 
@@ -61,14 +62,13 @@ if (!isset($_GET['pg'])) {
             }
 
             //kiem tra co phai form search khong?
-            if (isset($_POST["timkiem"]) && ($_POST["timkiem"])) {
+            if (isset($_POST["timkiem"])) {
                 $kyw = $_POST["kyw"];
                 $titlepage = "KẾT QUẢ TÌM KIẾM: " . $kyw;
             }
             //DANH MUC
             $dssp = get_dssp($kyw, $iddm);
-            /*             $sanpham = sanpham();
- */
+            /*             $sanpham = sanpham();*/
             include 'view/sanpham.php';
             break;
 
@@ -106,9 +106,6 @@ if (!isset($_GET['pg'])) {
                     include 'view/login.php';
                 }
             }
-
-
-
             break;
         case 'dangnhap':
             include 'view/login.php';
@@ -121,6 +118,7 @@ if (!isset($_GET['pg'])) {
             header('location: index.php');
             break;
         case 'adduser':
+
             //xac dinh gia tri dau vao (input)
             if (isset($_POST["dangky"]) && ($_POST["dangky"])) {
 
@@ -130,10 +128,22 @@ if (!isset($_GET['pg'])) {
                 $phone = $_POST["phone"];
 
                 //xu ly
+
+            }
+            $kq = check_taikhoan($username, $phone);
+            if (is_array($kq) && (count($kq))  && (count($kq) > 0)) {
+                extract($kq);
+                if ($username = $_POST['username']) {
+                    echo 'Tên đã có người đăng ký';
+                    include "view/register.php";
+                }
+            } else {
+
                 user_insert($ten, $username, $password, $phone);
+                include "view/login.php";
             }
             //
-            include "view/login.php";
+
             break;
             //chinh sua ho so
         case 'updateuser':
@@ -167,6 +177,104 @@ if (!isset($_GET['pg'])) {
 
         case 'giohang':
             if (isset($_POST['dathang'])) {
+                // Xử lý khi nhấn nút 'dathang'
+
+                $hinh_sp = $_POST['hinh_sp'];
+                $ten_sp = $_POST['ten_sp'];
+                $gia = $_POST['gia'];
+                $size = $_POST['size'];
+                $idpro = $_POST['idpro'];
+                $sol = $_POST['soluongInput'];
+
+                // Kiểm tra xem giỏ hàng đã được khởi tạo chưa
+                if (!isset($_SESSION['giohang'])) {
+                    $_SESSION['giohang'] = array();
+                }
+
+                $productExists = false;
+
+                foreach ($_SESSION['giohang'] as $index => $product) {
+                    if ($product['ten_sp'] === $ten_sp) {
+                        // Nếu sản phẩm đã tồn tại, tăng số lượng lên số lượng mới
+                        $_SESSION['giohang'][$index]['sl'] += 1;
+                        $productExists = true;
+                        break;
+                    }
+                }
+                $productExists = false;
+                foreach ($_SESSION['giohang'] as $index => $product) {
+                    if ($product['ten_sp'] === $ten_sp && $product['size'] === $size) {
+                        $_SESSION['giohang'][$index]['sl'] += 1; // Tăng số lượng
+                        $productExists = true;
+                        break;
+                    }
+                }
+                if (!$productExists) {
+                    // Nếu sản phẩm chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
+                    $_SESSION['giohang'][] = array(
+                        'idpro' => $idpro,
+                        'hinh_sp' => $hinh_sp,
+                        'ten_sp' => $ten_sp,
+                        'size' => $size,
+                        'gia' => $gia,
+                        'sl' => $sol // Số lượng sản phẩm đã chọn
+                    );
+                }
+            }
+
+            if (isset($_POST['muangay'])) {
+                // Xử lý khi nhấn nút 'muangay'
+
+                $hinh_sp = $_POST['hinh_sp'];
+                $ten_sp = $_POST['ten_sp'];
+                $gia = $_POST['gia'];
+                $idpro = $_POST['idpro'];
+                $size = $_POST['size'];
+                $sl = $_POST['soluongInput']; // Lấy số lượng từ form
+
+                // Kiểm tra xem giỏ hàng đã được khởi tạo chưa
+                if (!isset($_SESSION['giohang'])) {
+                    $_SESSION['giohang'] = array();
+                }
+
+                $productExists = false;
+
+                foreach ($_SESSION['giohang'] as $index => $product) {
+                    if ($product['ten_sp'] === $ten_sp) {
+                        // Nếu sản phẩm đã tồn tại, tăng số lượng lên số lượng mới
+                        $_SESSION['giohang'][$index]['sl'] += $sl;
+                        $productExists = true;
+                        break;
+                    }
+                }
+
+                if (!$productExists) {
+                    // Nếu sản phẩm chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
+                    $_SESSION['giohang'][] = array(
+                        'idpro' => $idpro,
+                        'hinh_sp' => $hinh_sp,
+                        'ten_sp' => $ten_sp,
+                        'size' => $size,
+                        'gia' => $gia,
+                        'sl' => $sl // Số lượng sản phẩm đã chọn
+                    );
+                }
+            }
+
+            // Kiểm tra và include view tương ứng sau khi xử lý
+            if (isset($_POST['dathang']) || isset($_POST['muangay'])) {
+                if (isset($_POST['dathang'])) {
+                    include 'view/cart.php';
+                    break; // View after processing 'dathang'
+                } elseif (isset($_POST['muangay'])) {
+                    include 'view/bill.php';
+                    break; // View after processing 'muangay'
+                }
+            }
+
+
+        case 'newgiohang':
+            if (isset($_POST['dathang'])) {
                 $index = $_POST['dathang'];
                 if (isset($_SESSION['giohang'][$index])) {
                     $_SESSION['giohang'][$index]['sl'] += 1;
@@ -196,6 +304,7 @@ if (!isset($_GET['pg'])) {
                 $ten_sp = $_POST['ten_sp'];
                 $gia = $_POST['gia'];
                 $idpro = $_POST['idpro'];
+                $sol = $_POST['soluongInput'];
                 $productExists = false;
                 foreach ($_SESSION['giohang'] as $index => $product) {
                     if ($product['ten_sp'] === $ten_sp) {
@@ -212,27 +321,26 @@ if (!isset($_GET['pg'])) {
                         'hinh_sp' => $hinh_sp,
                         'ten_sp' => $ten_sp,
                         'gia' => $gia,
-                        'sl' => 1
+                        'sl' =>  $sol
                     );
                 }
             }
 
             include 'view/cart.php';
             break;
-
         case 'thanhtoan':
             if (isset($_POST['donhang'])) {
             }
             include "view/bill.php";
             break;
 
-        case 'muangay':
+            /* case 'muangay':
             if (isset($_POST['dathang'])) {
                 $hinh_sp = $_POST['hinh_sp'];
                 $ten_sp = $_POST['ten_sp'];
                 $gia = $_POST['gia'];
                 $idpro = $_POST['idpro'];
-                $productExists = false;
+$productExists = false;
                 foreach ($_SESSION['giohang'] as $index => $product) {
                     if (!$productExists) {
                         $_SESSION['giohang'][] = array(
@@ -240,16 +348,15 @@ if (!isset($_GET['pg'])) {
                             'hinh_sp' => $hinh_sp,
                             'ten_sp' => $ten_sp,
                             'gia' => $gia,
-                            'sl' => 1
+                            'sl' => $sl
                         );
                     }
                 }
             }
 
             include "view/bill.php";
-            break;
+            break; */
         case 'donhang':
-
             if (isset($_POST['thanhtoan'])) {
                 $ten = $_POST["ten"];
                 $phone = $_POST["phone"];
@@ -259,31 +366,62 @@ if (!isset($_GET['pg'])) {
                 $nguoinhan_diachi = $_POST["nguoinhan_diachi"];
                 $nguoinhan_dienthoai = $_POST["nguoinhan_dienthoai"];
                 $total = total();
-                // insert u moi
+
+                // insert or retrieve user ID
                 if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
                     $id_us = $_SESSION['s_user']['id_us'];
                 } else {
                     $id_us = user_insert_id($ten, $diachi, $phone, $email);
                 }
+
+                // insert order and get order ID
                 $idbill = bill_insert_id($id_us, $nguoinhan_ten, $nguoinhan_diachi, $nguoinhan_dienthoai, $ten, $diachi, $email, $phone, $total);
 
+                // insert products into order and order history
                 foreach ($_SESSION['giohang'] as $index => $value) {
                     extract($value);
-                    cart_insert($ten_sp, $hinh_sp, $gia, $sl, $idpro, $idbill);
+                    cart_insert($ten_sp, $hinh_sp, $gia, $idpro, $size, $sl, $idbill);
+                    // Add the following line to insert into order history
+                    /* history_insert($ten_sp, $hinh_sp, $gia, $idpro, $idbill, $id_us); */
                 }
+
+                // clear shopping cart
                 unset($_SESSION['giohang']);
                 $_SESSION['giohang'] = array();
             }
 
             include "view/bill_ct.php";
             break;
-            
+        case 'thanhtoanvnpay':
+            include 'view/vnpay.php';
+            break;
+        case 'thanhtoanmomo':
+            include 'view/xulythanhtoanmomo.php';
+            break;
         case 'forgot':
             include 'view/forgot_password.php';
             break;
-        
+
         case 'reset':
             include 'view/reset_password.php';
+            break;
+
+        case 'lichsumh':
+            if (isset($_GET['id_us']) && ($_GET['id_us'] > 0)) {
+                $id_us = $_GET['id_us'];
+            }
+
+            $showls = showw_lich($id_us);
+            include 'view/lichsumh.php';
+            break;
+        case 'chitietlichsu':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $idbill = $_GET['id'];
+                $showls = showw_ctlich($idbill);
+            }
+
+
+            include 'view/chitietlichsu.php';
             break;
         default:
 

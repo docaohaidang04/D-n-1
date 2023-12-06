@@ -106,14 +106,13 @@ function  showsp($dssp)
                         
                         <div class="gia_dathang">
                           
-                        <span class="price">' .number_format($gia, 0, ","). '  đ</span>
+                        <span class="price">' . number_format($gia, 0, ",") . '  đ</span>
                         
                         <form action="index.php?pg=giohang" method="post"> 
                         <input type="hidden" name="hinh_sp" value="' . $hinh_sp . '">
                         <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
                         <input type="hidden" name="gia" value="' . $gia . '">
                         <input type="hidden" name="idpro" value="' . $id . '">
-                        <button id="themgiohang" name="dathang"> <a href=""><img src="layout/img/ion_cart.svg" alt="" srcset="" ></a></button>
                         </form>
                         </div>
                         </div>';
@@ -153,13 +152,13 @@ function  showspbc($dssp)
                         <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
                         <input type="hidden" name="gia" value="' . $gia . '">
                         <input type="hidden" name="idpro" value="' . $id . '">
-                        <button id="themgiohang" name="dathang"> <a href=""><img src="layout/img/ion_cart.svg" alt="" srcset="" ></a></button>
                         </form>
                         </div>
                         </div>';
     }
     return $html_dssp;
 }
+//  <button id="themgiohang" name="dathang"> <a href=""><img src="layout/img/ion_cart.svg" alt="" srcset="" ></a></button>
 /* function showspnho($dssp)
 {
     $html_dssp = '';
@@ -228,7 +227,7 @@ function showoption_spqt($showdm, $iddm = 0)
         if ($iddm == $id) {
             $kq_op .= '<option selected value="' . $id . '">' . $ten . '</option>';
         } else {
-            $kq_op .= '<option value="' . $id . '">' . $ten. '</option>';
+            $kq_op .= '<option value="' . $id . '">' . $ten . '</option>';
         }
     }
     return $kq_op;

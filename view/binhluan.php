@@ -94,7 +94,7 @@ if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
     color: black;
 }
 
-input {
+#commentForm input {
     padding: 8px 16px;
     background-color: black;
     color: #fff;

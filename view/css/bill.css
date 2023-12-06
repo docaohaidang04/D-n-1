@@ -39,7 +39,7 @@
      background-size: 100%;
      padding-bottom: 25px;
 }
-form{
+.thongtin_left form{
      display: flex;
      flex-direction: column;
      background: #FFF;
@@ -58,7 +58,7 @@ form{
 
 }
 
-form div{
+.thongtin_left form div{
      margin-bottom: 10px; /* Khoảng cách giữa các div chứa label và input */
      margin-left: 10px;
      display: flex;
@@ -70,7 +70,7 @@ form div{
      margin-bottom: 5px; /* Khoảng cách giữa label và input */
  }
  
- form input {
+ .thongtin_left form input {
      padding: 5px;
      width: 670px;
      height: 40px;
@@ -138,19 +138,21 @@ form div{
 }
 
 .thongtin_sp_2_datdon{
-     background: #000;
+     background-color:rgb(197, 52, 52) ;
      color: #FFF;
      margin: 10px;
      text-align: center;
-     border-radius: 10px;
+     border: 1px solid white;
+     border-radius: 5px;
      width: 30%;
-     height: 30px;
+     height: 40px;
      margin-left: 230px;
 }
 .thongtin_sp_2_datdon:hover{
-     background: #FFF;
-     border: 1px solid black;
+     background:white;
+     border: 3px solid rgb(197, 52, 52) ;
      color: black;
+     font-weight: 500;
      
 }
 
@@ -165,4 +167,11 @@ form div{
      border-left: 4px red solid;
      margin-left: 200px;
      margin-top: 30px;
+}
+.ttdathang a{
+     color: rgb(197, 52, 52) ;
+     font-size: 20px;
+}
+.ttdathang a:hover{
+     color: rgb(12, 96, 198);
 }

@@ -5,19 +5,9 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start(); // Nếu chưa tồn tại, bắt đầu session
 }
 
-if (isset($_POST['size'])) {
-    $selectedSize = $_POST['size'];
-} else {
-    $selectedSize = 'N/A';
-}
-
-$selectedSize = isset($_POST['size']) ? $_POST['size'] : 'N/A';
-echo "Kích cỡ đã chọn: " . $selectedSize;
-
 $kq = '';
 $stt = 0;
 $totalAmount = 0;
-$selectedSizeCart = isset($_POST['size']) ? $_POST['size'] : 'N/A';
 foreach ($_SESSION['giohang'] as $index => $value) {
     extract($value);
     $stt++;
@@ -29,15 +19,15 @@ foreach ($_SESSION['giohang'] as $index => $value) {
     <td><img src="' . $hinh_sp . '" alt="" width="70px;"></td>
     <td>' . $ten_sp . '</td>
     <td>' . number_format(floatval($gia), 0, ",", ".") . '</td>
-    <td>' . $selectedSize . '</td>
+    <td>' . $size . '</td>
     <td id="soluongTd' . $index . '">' . $sl . '</td>
     <td>' . number_format((float)$gia * (int)$sl, 0, ",", ".") . '</td>
     <td>
-        <form method="post">
-            <input type="hidden" name="size" value="<?= $selectedSize ?>">
-<input type="hidden" name="xoa" value="' . $index . '">
-<button type="submit" class="btn"><i class="fas fa-trash-alt" style="color: #fa3605;"></i></button>
-</form>
+    <form method="post">
+        <input type="hidden" name="size" value="' . $size . '">
+        <input type="hidden" name="xoa" value="' . $index . '">
+        <button type="submit" class="btn"><i class="fas fa-trash-alt" style="color: #fa3605;"></i></button>
+    </form>
 </td>
 </tr>';
 }
@@ -68,12 +58,30 @@ foreach ($_SESSION['giohang'] as $index => $value) {
         <p>Voucher</p>
         <input class="vc" type="text" placeholder="Nhập voucher..."><button class="nhap">Nhập</button>
         <p>Tổng tiền: <?php echo number_format($totalAmount, 0, ",", "."); ?> đ</p>
-        <form method="post" action="index.php?pg=thanhtoan">
-            <button type="submit" class="tt" name="">THANH TOÁN</button>
-        </form>
-        <form method="post">
-            <input type="hidden" name="xoatatca" value="1">
-            <button type="submit" class="xoa">XÓA TẤT CẢ</button>
-        </form>
+        PHƯƠNG THỨC THANH TOÁN
+        <br>
+        <div class="form_fott">
+            <form method="post" action="index.php?pg=thanhtoan">
+                <input type="hidden" name="ngaydat" value="<?= date('Y-m-d H:i:s'); ?>">
+                <button type="submit" class="tt" name="muangay">THANH TOÁN TIỀN MẶT</button>
+                <!-- <button type="submit" class="tt" name="muangay">THANH TOÁN BẰNG MOMO</button> -->
+
+            </form>
+            <br>
+            <form action="index.php?pg=thanhtoanvnpay">
+                <input class="tt" type="submit" name="vnpay" value="Thanh toán VNPAY">
+            </form>
+            <form action="index.php?pg=thanhtoanmomo" method="POST" target="_blank"
+                enctype="application/x-www-form-urlencoded">
+                <input class="tt" type="submit" name="momo" value="Thanh toán MOMO">
+            </form>
+            <form action="momoATM.php" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
+                <input type="submit" name="momo" value="Thanh toán momo ATM">
+            </form>
+            <form method="post">
+                <input type="hidden" name="xoatatca" value="1">
+                <button type="submit" class="xoa">XÓA TẤT CẢ</button>
+            </form>
+        </div>
     </div>
 </div>

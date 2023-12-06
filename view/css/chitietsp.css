@@ -158,11 +158,26 @@
 .sl{
     display: flex;
 }
-.sl .sl_sp{
+/* .sl .sl_sp{
     margin-top: 21px;
     background-color: white;
     height: 30px;
     margin-left: 20px;
+} */
+.sl_sp input{
+    background: white;
+    border:1px solid black;
+    color: black;
+    border-radius: 20px;
+    width: 30px;
+    height: 10px;
+    text-align: center;
+            
+}
+.sl_sp{
+    padding-top: 20px;
+    padding-left: 10px;
+    /* padding-bottom: 10px; */
 }
 
 .sl button{
@@ -175,7 +190,7 @@
 }
 
 .sp_right .muangay{
-    background-color: black;
+    background-color:rgb(197, 52, 52);
     color: #EEE;
     width: 220px;
     height: 50px;
@@ -212,12 +227,12 @@
 }
 .muangay:hover{
     background: white;
-    border: 1px solid #000;
-    color: black;
+    border: 2px solid rgb(197, 52, 52);
+    color: rgb(197, 52, 52);
 }
 .themgh:hover{
     background: white;
-    border: 1px solid #027794;
+    border: 2px solid #027794;
     color:#027794;
 }
 
@@ -262,6 +277,20 @@
 .form_fo1{
     display: flex;
 }
- 
- 
+.form_fo1 label{
+    font-size: 15px;
+    font-weight:1000;
+}
+.form_fo1 input[type="number"]{
+    background-color: #FFF;
+    color:#000;
+    text-align: center;
+    border: none;
+    border: 1px solid black;
+    width: 70px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 20px;
+    height: 25px;
+}
 

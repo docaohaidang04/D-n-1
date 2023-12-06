@@ -38,18 +38,16 @@ th, td{
     background: #FFF;
 }
 .nhap{
-    width: 58px;
-    height: 22px;
+    width: 60px;
+    height: 30px;
     flex-shrink: 0;
-    background: #000;
-
+    background: rgba(0, 0, 0, 0.50);
     color: #FFF;
     font-family: Space Grotesk;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-
     margin-left: 20px;
 }
 
@@ -62,16 +60,15 @@ th, td{
     height: 40px;
     flex-shrink: 0;
     border-radius: 10px;
-    background: #000;
+    background: rgb(197, 52, 52);
 
     color: #FFF;
     text-align: center;
     font-family: Space Grotesk;
-    font-style: normal;
     line-height: normal;
 
     display: inline-block;
-    border: 2px solid #333;
+    border: 1px solid rgb(197, 52, 52);
     transition: transform 0.3s ease-in-out;
 }
 .xoa{
@@ -80,8 +77,6 @@ th, td{
     flex-shrink: 0;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.50);
-
-
     color: #FFF;
     text-align: center;
     font-family: Space Grotesk;
@@ -96,10 +91,9 @@ th, td{
 }
 
 .tt:hover{
-    background-color: #FFF;
-    color: #000;
-    border: 2px solid #333;
-    font-weight: bold;
+    background-color: #fff;
+    color: rgb(197, 52, 52);
+    border: 2px solid rgb(197, 52, 52);
     transform: scale(1.1);
 }
 .xoa:hover{
