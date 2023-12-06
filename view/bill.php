@@ -48,59 +48,59 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
                 extract($_SESSION['s_user']);
 
             ?>
-                <div>
-                    <label for="tenNguoiDat">Tên người đặt</label>
-                    <input type="text" name="ten" id="tenNguoiDat" value="<?= $ten ?>" placeholder="Nhập tên">
-                </div>
+            <div>
+                <label for="tenNguoiDat">Tên người đặt</label>
+                <input type="text" name="ten" id="tenNguoiDat" value="<?= $ten ?>" placeholder="Nhập tên">
+            </div>
 
-                <div>
-                    <label for="soDienThoai">SĐT</label>
-                    <input type="text" name="phone" id="soDienThoai" value="<?= $phone ?>" placeholder="Số điện thoại">
-                </div>
+            <div>
+                <label for="soDienThoai">SĐT</label>
+                <input type="text" name="phone" id="soDienThoai" value="<?= $phone ?>" placeholder="Số điện thoại">
+            </div>
 
-                <div>
-                    <label for="diaChi">Địa chỉ giao hàng</label>
-                    <input type="text" name="diachi" id="diaChi" placeholder="Nhập địa chỉ" value="<?= $diachi ?>">
-                </div>
+            <div>
+                <label for="diaChi">Địa chỉ giao hàng</label>
+                <input type="text" name="diachi" id="diaChi" placeholder="Nhập địa chỉ" value="<?= $diachi ?>">
+            </div>
 
-                <div>
-                    <label for="Email">Email:</label>
-                    <input type="text" name="email" id="email" placeholder="Nhập email" value="<?= $email ?>">
-                </div>
+            <div>
+                <label for="Email">Email:</label>
+                <input type="text" name="email" id="email" placeholder="Nhập email" value="<?= $email ?>">
+            </div>
 
 
-                <div class="ttdathang">
-                    <a id="showInfoLink" onclick="showttnh()">Thay đổi thông tin nhận hàng</a>
-                </div>
+            <div class="ttdathang">
+                <a id="showInfoLink" onclick="showttnh()">Thay đổi thông tin nhận hàng</a>
+            </div>
             <?php
             } else {
 
 
             ?>
-                <div>
-                    <label for="tenNguoiDat">Tên người đặt</label>
-                    <input type="text" name="ten" id="tenNguoiDat" value="" placeholder="Nhập tên">
-                </div>
+            <div>
+                <label for="tenNguoiDat">Tên người đặt</label>
+                <input type="text" name="ten" id="tenNguoiDat" value="" placeholder="Nhập tên">
+            </div>
 
-                <div>
-                    <label for="soDienThoai">SĐT</label>
-                    <input type="text" name="phone" id="soDienThoai" value="" placeholder="Số điện thoại">
-                </div>
+            <div>
+                <label for="soDienThoai">SĐT</label>
+                <input type="text" name="phone" id="soDienThoai" value="" placeholder="Số điện thoại">
+            </div>
 
-                <div>
-                    <label for="diaChi">Địa chỉ giao hàng</label>
-                    <input type="text" name="diachi" id="diaChi" placeholder="Nhập địa chỉ" value="">
-                </div>
+            <div>
+                <label for="diaChi">Địa chỉ giao hàng</label>
+                <input type="text" name="diachi" id="diaChi" placeholder="Nhập địa chỉ" value="">
+            </div>
 
-                <div>
-                    <label for="Email">Email:</label>
-                    <input type="text" name="email" id="email" placeholder="Nhập email" value="">
-                </div>
+            <div>
+                <label for="Email">Email:</label>
+                <input type="text" name="email" id="email" placeholder="Nhập email" value="">
+            </div>
 
 
-                <div class="ttdathang">
-                    <a id="showInfoLink" onclick="showttnh()">Thay đổi thông tin nhận hàng</a>
-                </div>
+            <div class="ttdathang">
+                <a id="showInfoLink" onclick="showttnh()">Thay đổi thông tin nhận hàng</a>
+            </div>
             <?php
             }
             ?>
@@ -140,19 +140,19 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
             foreach ($_SESSION['giohang'] as $index => $value) {
                 extract($value);
             ?>
-                <div class="thongtin_sp">
-                    <img src="<?= $hinh_sp ?>" alt="" width="103.196px" height="79px">
-                    <div class="thongtin_sp_1">
-                        <p><?= $ten_sp ?></p>
-                        <p><?= number_format(floatval($gia), 0, ",", ".") ?></p>
+            <div class="thongtin_sp">
+                <img src="<?= $hinh_sp ?>" alt="" width="103.196px" height="79px">
+                <div class="thongtin_sp_1">
+                    <p><?= $ten_sp ?></p>
+                    <p><?= number_format(floatval($gia), 0, ",", ".") ?></p>
 
-                        <div class="thongtin_sp_2">
-                            <p>Số lượng:</p>
-                            <p><?= $sl ?></p>
-                            <p>Kích cỡ: <?= $size ?></p>
-                        </div>
+                    <div class="thongtin_sp_2">
+                        <p>Số lượng:</p>
+                        <p><?= $sl ?></p>
+                        <p>Kích cỡ: <?= $size ?></p>
                     </div>
                 </div>
+            </div>
             <?php
             }
             ?>
@@ -166,34 +166,77 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
             </div>
 
 
-            <form action="add_to_history.php" method="POST">
-                <!-- Các input của form (tên, điện thoại, địa chỉ, ...) -->
-                <!-- ... -->
-                <button class="thongtin_sp_2_datdon" name="thanhtoan" type="submit">ĐẶT ĐƠN</button>
-            </form>
+            
+            <p align="center">PHƯƠNG THỨC THANH TOÁN</p>
+            <div class="ptthanhtoan">
+                
+                    <form action="add_to_history.php" method="POST">
+                        <!-- Các input của form (tên, điện thoại, địa chỉ, ...) -->
+                        <!-- ... -->
+                        <!-- <button class="thongtin_sp_2_datdon" name="thanhtoan" type="submit">thanh toán tiền mặt</button> -->
 
-        </div>
+                        <button type="submit" class="ptttoan" name="thanhtoan"><a href=""><img src="layout/img/icontienmat.png" width="40px" height="40px"></a></button>
+                    </form>
+                    <form action="index.php?pg=thanhtoanvnpay">
+                        <!-- <input class="ptttoan" type="submit" name="vnpay" value="Thanh toán VNPAY"> -->
+                        <button type="submit" class="ptttoan" name="vnpay"><a href=""><img src="layout/img/vnpay.svg.svg" width="40px" height="40px"></a></button>
+                        
+                    </form>
+
+                    <form action="index.php?pg=thanhtoanmomo" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
+                        <!-- <input class="ptttoan" type="submit" name="momo" value="Thanh toán MOMO"> -->
+                        <button type="submit" class="ptttoan" name="momo"><a href=""><img src="layout/img/QRmomo.webp" width="40px" height="40px"></a></button>
+                    </form>
+
+                    <form action="view/momoATM.php" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
+                        <!-- <input class="ptttoan" type="submit" name="momo" value="Thanh toán momo ATM"> -->
+                        <button type="submit" class="ptttoan" name="momo"><a href=""><img src="layout/img/iconmomo.webp" width="40px" height="40px"></a></button>
+                    </form>
+            </div>
+            <!-- <form action="add_to_history.php" method="POST">
+                 Các input của form (tên, điện thoại, địa chỉ, ...) -->
+                <!-- ...
+                <button class="thongtin_sp_2_datdon" name="thanhtoan" type="submit">ĐẶT ĐƠN</button>
+            </form> -->
     </div>
 
 
 </div>
-</form>
+</div>
+
+
 
 
 
 
 <style>
-    #ttdathang {
-        display: none;
-    }
+#ttdathang {
+    display: none;
+}
+#showInfoLink {
+    background-color: rgb(197, 52, 52);
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 300px;
+}
+
+#showInfoLink:hover {
+    background-color: #fff;
+    color: rgb(197, 52, 52);
+    border: 1px solid rgb(197, 52, 52);
+}
 </style>
 <script>
-    function showttnh() {
-        var infoSection = document.getElementById("ttdathang");
-        if (infoSection.style.display === "none" || infoSection.style.display === "") {
-            infoSection.style.display = "block";
-        } else {
-            infoSection.style.display = "none";
-        }
+function showttnh() {
+    var infoSection = document.getElementById("ttdathang");
+    if (infoSection.style.display === "none" || infoSection.style.display === "") {
+        infoSection.style.display = "block";
+    } else {
+        infoSection.style.display = "none";
     }
+}
 </script>
