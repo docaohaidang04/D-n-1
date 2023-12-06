@@ -51,7 +51,7 @@ if (!isset($_GET['pg'])) {
                 $id_us = $_GET['id_us'];
             }
             $showb = showb($id_us);
-            include '../view/quantri/qldh.php';
+            include '../admin/quantri/qldh.php';
 
 
             break;
@@ -61,12 +61,12 @@ if (!isset($_GET['pg'])) {
                 $idbill = $_GET['id'];
                 $showls = showw_ctlich($idbill);
             }
-            include '../view/quantri/chitietdh.php';
+            include '../admin/quantri/chitietdh.php';
             break;
         case 'user':
             //Show khách hàng
             $showus = showus();
-            include '../view/quantri/khachhang.php';
+            include '../admin/quantri/khachhang.php';
             break;
             // case 'userxoa':
             //     if (isset($_GET['id'])) {
@@ -81,12 +81,12 @@ if (!isset($_GET['pg'])) {
             khach_hang_add($_POST['username'], $_POST['password'], $_POST['phone'], $_POST['email'], $_POST['vaitro']);
             //Show khách hàng
             $showus = showus();
-            include '../view/quantri/khachhang.php';
+            include '../admin/quantri/khachhang.php';
             break;
         case 'uduser':
             //Show khách hàng
             $showus = showus();
-            include '../view/quantri/udkhachhang.php';
+            include '../admin/quantri/udkhachhang.php';
             break;
 
         case 'capnhatus':
@@ -101,12 +101,12 @@ if (!isset($_GET['pg'])) {
             }
             //Show khách hàng
             $showus = showus();
-            include '../view/quantri/khachhang.php';
+            include '../admin/quantri/khachhang.php';
             break;
         case 'loai':
             //Show dm
             $showdm = danhmuc_select_all();
-            include '../view/quantri/danhmuc.php';
+            include '../admin/quantri/danhmuc.php';
             break;
         case 'dmxoa':
             if (isset($_GET['id'])) {
@@ -115,7 +115,7 @@ if (!isset($_GET['pg'])) {
             }
             //Show danh muc
             $showdm = danhmuc_select_all();
-            include '../view/quantri/danhmuc.php';
+            include '../admin/quantri/danhmuc.php';
             break;
         case 'dmthem':
             $ten = $_POST['ten'];
@@ -134,12 +134,12 @@ if (!isset($_GET['pg'])) {
 
             //Show danh muc
             $showdm = danhmuc_select_all();
-            include '../view/quantri/danhmuc.php';
+            include '../admin/quantri/danhmuc.php';
             break;
         case 'loaisua':
             //Show danh muc
             $showdm = danhmuc_select_all();
-            include '../view/quantri/uddanhmuc.php';
+            include '../admin/quantri/uddanhmuc.php';
             break;
         case 'ud_sua':
             if (isset($_POST['sualoai']) && ($_POST['sualoai'])) {
@@ -150,7 +150,7 @@ if (!isset($_GET['pg'])) {
             loai_update($ten, $ma, $id);
             //Show danh muc
             $showdm = danhmuc_select_all();
-            include '../view/quantri/danhmuc.php';
+            include '../admin/quantri/danhmuc.php';
             break;
             // HANG HOA
         case 'sanpham':
@@ -159,7 +159,7 @@ if (!isset($_GET['pg'])) {
             $kq_op = showoption_spqt($showdm);
             //Show sp
             $showsp = show_sp();
-            include '../view/quantri/sanpham.php';
+            include '../admin/quantri/sanpham.php';
             break;
         case 'spxoa':
             if (isset($_GET['id'])) {
@@ -173,7 +173,7 @@ if (!isset($_GET['pg'])) {
             $kq_op = showoption_spqt($showdm);
             //Show sp
             $showsp = show_sp();
-            include '../view/quantri/sanpham.php';
+            include '../admin/quantri/sanpham.php';
             break;
 
         case 'spthem':
@@ -197,7 +197,7 @@ if (!isset($_GET['pg'])) {
             $kq_op = showoption_spqt($showdm);
             //Show hàng hóa
             $showsp = show_sp();
-            include '../view/quantri/sanpham.php';
+            include '../admin/quantri/sanpham.php';
             break;
 
         case 'udsp':
@@ -206,7 +206,7 @@ if (!isset($_GET['pg'])) {
             $kq_op = showoption_spqt($showdm);
             //Show hàng hóa
             $showsp = show_sp();
-            include '../view/quantri/udsanpham.php';
+            include '../admin/quantri/udsanpham.php';
             break;
         case 'capnhatsp':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
@@ -233,7 +233,7 @@ if (!isset($_GET['pg'])) {
             $kq_op = showoption_spqt($showdm);
             //Show hàng hóa
             $showsp = show_sp();
-            include '../view/quantri/sanpham.php';
+            include '../admin/quantri/sanpham.php';
             break;
         case 'logout':
             if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
@@ -243,14 +243,14 @@ if (!isset($_GET['pg'])) {
             break;
         case 'binhluan':
             $showbl = load_bl(0);
-            include '../view/quantri/binhluan.php';
+            include '../admin/quantri/binhluan.php';
             break;
         case 'chitietbinhluan':
             if (isset($_GET['idpro']) && ($_GET['idpro'] > 0)) {
                 $idpro = $_GET['idpro'];
             }
             $showctbl = load_blct($idpro);
-            include '../view/quantri/chitietbinhluan.php';
+            include '../admin/quantri/chitietbinhluan.php';
             break;
         case 'chitietbinhluanxoa':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -258,14 +258,14 @@ if (!isset($_GET['pg'])) {
                 binh_luan_delete($id);
             }
             $showbl = load_bl(0);
-            include '../view/quantri/binhluan.php';
+            include '../admin/quantri/binhluan.php';
             break;
         case 'chitietdh':
-            include '../view/quantri/chitietdh.php';
+            include '../admin/quantri/chitietdh.php';
             break;
         case 'exit':
             $showbl = load_bl(0);
-            include '../view/quantri/binhluan.php';
+            include '../admin/quantri/binhluan.php';
             break;
 
         default:
