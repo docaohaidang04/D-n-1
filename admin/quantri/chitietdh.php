@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="view/css/cart.css">
+<link rel="stylesheet" href="../view/css/cart.css">
 <?php
 $kq = '';
 $stt = 0;
@@ -8,6 +8,8 @@ $stt = 0;
 foreach ($showls as $value) {
     extract($value);
     $stt++;
+    $confirmationLinkId = 'confirmationLink_' . $idbill;
+
     $kq .= ' <tr>
         <td>' . $stt . '</td>
         <td>#RS' . $idbill . '</td>
@@ -17,8 +19,8 @@ foreach ($showls as $value) {
         <td>' . $gia . '</td>
         <td>' . $size . '</td>
         <td>' . $sl . '</td>
-        <td><a>Chờ xác nhận</a></td>
-        <td><a href="index.php?pg=sanphamchitiet&id=' . $idpro . '">Xem chi tiết sản phẩm</a></td>
+        <td><a href="#" id="' . $confirmationLinkId . '">Xác nhận</a></td>        
+<td><a href="../index.php?pg=sanphamchitiet&id=' . $idpro . '">Xem chi tiết sản phẩm</a></td>
         
         
 
@@ -28,8 +30,21 @@ foreach ($showls as $value) {
 }
 
 ?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all elements with the class "confirmationLink"
+    var confirmationLinks = document.querySelectorAll('[id^="confirmationLink_"]');
 
-
+    // Add a click event listener to each link
+    confirmationLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default behavior (navigating to the href)
+            link.textContent =
+                'Đã xác nhận'; // Change the text content to "Đã xác nhận"
+        });
+    });
+});
+</script>
 <div class="cart">
     <div class="cart_left">
         <p>Chi tiết đơn hàng</p>
@@ -54,3 +69,18 @@ foreach ($showls as $value) {
 
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the link element
+        var confirmationLink = document.getElementById('confirmationLink');
+
+        // Add a click event listener
+        confirmationLink.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default behavior (navigating to the href)
+
+            // Change the text content to "Đã xác nhận"
+            confirmationLink.textContent = 'Đã xác nhận';
+        });
+    });
+</script> -->
