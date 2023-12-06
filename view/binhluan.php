@@ -18,8 +18,8 @@ $dsbl = binh_luan_select_all($idpro);
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
             <label for="commentInput">Ý kiến của bạn:</label>
             <input type="hidden" name="idpro" value="<?= $idpro ?>">
-            <input type="text" id="commentInput" name="noidung" placeholder="Nhập ý kiến của bạn...">
-            <input type="submit" name="guibinhluan" value="Gửi đánh giá">
+            <input type="text" id="commentText" name="noidung" placeholder="Nhập ý kiến của bạn...">
+            <input type="submit" id="commentSubmit" name="guibinhluan" value="Gửi đánh giá">
         </form>
     </div>
     <?php
@@ -84,7 +84,7 @@ if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
 
 }
 
-#commentInput {
+#commentText {
     width: 70%;
     padding: 8px;
     margin-right: 10px;
@@ -94,11 +94,20 @@ if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
     color: black;
 }
 
-#commentForm input {
+#commentForm #commentText {
     padding: 8px 16px;
-    background-color: black;
+    background-color: #fff;
+    color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+#commentSubmit{
+    padding: 8px 16px;
+    background-color: rgb(197, 52, 52);
     color: #fff;
-    border: none;
+    border: 1px solid black;
     border-radius: 20px;
     cursor: pointer;
 }
@@ -127,5 +136,11 @@ if (isset($_POST['guibinhluan']) && ($_POST['guibinhluan'])) {
 
 .comment-content h3 {
     margin: 0 0 10px;
+}
+
+#commentSubmit:hover{
+    background-color: #fff;
+    border: 1px solid rgb(197, 52, 52);
+    color: rgb(197, 52, 52);
 }
 </style>
