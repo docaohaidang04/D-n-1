@@ -267,17 +267,17 @@ if (!isset($_GET['pg'])) {
             $showbl = load_bl(0);
             include '../admin/quantri/binhluan.php';
             break;
-         case 'thongke':
+        case 'thongke':
             $listthongke = loadall_thongke();
-            include "admin/quantri/list.php";
+            include "../admin/quantri/list.php";
             break;
 
         case 'bieudo':
-                $listthongke = loadall_thongke();
-                include "admin/quantri/bieudo.php";
+            $listthongke = loadall_thongke();
+            include "../admin/quantri/bieudo.php";
             break;
         default:
-            include 'admin.php';
+            include '../admin/admin.php';
             break;
     }
 }
