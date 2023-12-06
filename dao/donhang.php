@@ -50,3 +50,11 @@ function total()
     }
     return $totalAmount;
 }
+function loadall_thongke(){
+    $sql="SELECT danhmuc.id as madm, danhmuc.ten as tendm, count(sanpham.id) as countsp, min(sanpham.gia) as minprice, max(sanpham.gia) as maxprice, avg(sanpham.gia) as avgprice";
+    $sql.=" FROM sanpham LEFT JOIN danhmuc on danhmuc.id=sanpham.iddm";
+    $sql.=" group by danhmuc.id order by danhmuc.id desc";
+    $listtk=pdo_query($sql);
+    return $listtk;
+}
+?>
