@@ -55,7 +55,7 @@
      margin-left: 20px;
      padding-top: 5px;
      /* height: 800px; */
-
+     height: auto;
 }
 
 .thongtin_left form div{
@@ -146,7 +146,7 @@
      border-radius: 5px;
      width: 30%;
      height: 40px;
-     margin-left: 230px;
+margin-left: 270px;
 }
 .thongtin_sp_2_datdon:hover{
      background:white;
@@ -174,4 +174,13 @@
 }
 .ttdathang a:hover{
      color: rgb(12, 96, 198);
+}
+.ptthanhtoan{
+     display: flex;
+     justify-content: center;
+}
+.ptthanhtoan .ptttoan{
+     background-color: #FFF;
+     margin: 10px;
+     border: none;
 }
