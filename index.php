@@ -380,7 +380,7 @@ $productExists = false;
                 // insert products into order and order history
                 foreach ($_SESSION['giohang'] as $index => $value) {
                     extract($value);
-                    cart_insert($ten_sp, $hinh_sp, $gia, $idpro, $size, $sl, $idbill);
+                    cart_insert($ten, $hinh, $gia,$size,$sl,  $idpro, $idbill);
                     // Add the following line to insert into order history
                     /* history_insert($ten_sp, $hinh_sp, $gia, $idpro, $idbill, $id_us); */
                 }
