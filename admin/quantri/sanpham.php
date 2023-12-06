@@ -8,7 +8,7 @@ foreach ($showsp as $value) {
   $kq .= ' <tr>
         <td>' . $stt . '</td>
         <td>' . $ten_sp . '</td>
-        <td><img src="' . $hinh_sp . '"width=100px></td>
+        <td><img src="../' . $hinh_sp . '"width=100px></td>
         <td>' . $gia . '</td>
         
         <td>' . $tendm . '</td>
@@ -32,7 +32,7 @@ foreach ($showsp as $value) {
       <label for="">Giá:</label> <input type="text" name="gia" value="" id="gia"><br>
       <div id="errGia"></div>
       <label for="">Mô tả:</label> <input type="text" name="mota" value="" id="mota"><br>
-      
+
       <!-- <label for="">Giảm:</label> <input type="text" name="giam" value=""><br> -->
       <label for="">Trạng thái:</label>
       <input type="radio" name="bestseller" value="0" id="bestseller">0. Bình thường<br>
