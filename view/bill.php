@@ -168,29 +168,34 @@ if (isset($_SESSION['s_user']) && (count($_SESSION['s_user']) > 0)) {
 
             
             <p align="center">PHƯƠNG THỨC THANH TOÁN</p>
-            <div class="ptthanhtoan">
+           <div class="ptthanhtoan">
                 
                     <form action="add_to_history.php" method="POST">
-                        <!-- Các input của form (tên, điện thoại, địa chỉ, ...) -->
-                        <!-- ... -->
+                        <div class="pttienmat">
                         <!-- <button class="thongtin_sp_2_datdon" name="thanhtoan" type="submit">thanh toán tiền mặt</button> -->
-
-                        <button type="submit" class="ptttoan" name="thanhtoan"><a href=""><img src="layout/img/icontienmat.png" width="40px" height="40px"></a></button>
+                        <button type="submit" class="ptttoan" name="thanhtoan">
+                            <a href=""><img src="layout/img/cod.svg" width="40px" height="40px"></a>
+                        </button>
+                        <label for="">VÍ VNPAY</label>
+                        </div>
                     </form>
+
                     <form action="index.php?pg=thanhtoanvnpay">
                         <!-- <input class="ptttoan" type="submit" name="vnpay" value="Thanh toán VNPAY"> -->
                         <button type="submit" class="ptttoan" name="vnpay"><a href=""><img src="layout/img/vnpay.svg.svg" width="40px" height="40px"></a></button>
-                        
+                        <label for="">VÍ VNPAY</label>
                     </form>
 
                     <form action="index.php?pg=thanhtoanmomo" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
                         <!-- <input class="ptttoan" type="submit" name="momo" value="Thanh toán MOMO"> -->
                         <button type="submit" class="ptttoan" name="momo"><a href=""><img src="layout/img/QRmomo.webp" width="40px" height="40px"></a></button>
+                        <label for="">QR MOMO</label>
                     </form>
 
                     <form action="view/momoATM.php" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
                         <!-- <input class="ptttoan" type="submit" name="momo" value="Thanh toán momo ATM"> -->
                         <button type="submit" class="ptttoan" name="momo"><a href=""><img src="layout/img/iconmomo.webp" width="40px" height="40px"></a></button>
+                        <label for="">MOMO</label>
                     </form>
             </div>
             <!-- <form action="add_to_history.php" method="POST">
