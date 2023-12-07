@@ -184,3 +184,21 @@ margin-left: 270px;
      margin: 10px;
      border: none;
 }
+.ptthanhtoan form{
+     display: flex;
+     flex-direction: column;
+     padding-bottom: 10px;
+}
+.ptthanhtoan .pttienmat{
+     display: flex;
+     flex-direction: column;
+     font-size: 12px;
+     padding-bottom: 10px;
+}
+.ptthanhtoan .pttienmat label{
+     margin: 0 auto;
+}
+.ptthanhtoan form label{
+     font-size: 12px;
+     margin: 0 auto;
+}
